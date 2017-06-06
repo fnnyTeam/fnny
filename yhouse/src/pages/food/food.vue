@@ -1,12 +1,19 @@
 <template>
 	<div class="food">
 		<h1>food</h1>
+		<jx-theme></jx-theme>
 	</div>	
 </template>
 
 <script type="text/javascript">
+
+import jxTheme from '../../components/jxTheme/jxTheme'
+
 export default{
-	name: 'food'
+	name: 'food',
+	
+	components: {jxTheme}
+
 }
 
 </script>
