@@ -48,6 +48,10 @@ export default{
 		padding: 0;
 		margin: 0;
 	}
+	#jxTheme .jxTheme_list{
+		background: #fff;
+		margin-bottom: .11rem;
+	}
 
 	#jxTheme .jxTheme_pic{
 		position: relative;
