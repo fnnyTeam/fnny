@@ -10,8 +10,14 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+<<<<<<< HEAD
     "axios": "^0.16.2",
     "vue": "^2.3.3"
+=======
+    "babel-runtime": "^6.23.0",
+    "vue": "^2.3.3",
+    "vue-router": "^2.5.3"
+>>>>>>> ba4d93ae9920b9ecbe0be57a617549619c163170
   },
   "devDependencies": {
     "autoprefixer": "^6.7.2",

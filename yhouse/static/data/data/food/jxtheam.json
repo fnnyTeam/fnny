@@ -1,0 +1,168 @@
+{
+    "code": "0",
+    "message": "success",
+    "detail": "",
+    "data": {
+        "reserveBanner": [],
+        "reserveList": [
+            {
+                "adsName": "reserveList",
+                "content": [
+                    {
+                        "id": 0,
+                        "description": null,
+                        "picUrl": "http://p.yhres.com/topic/2017/06/02/156970_1496385001902.jpg-q75",
+                        "sPicUrl": "http://p.yhres.com/topic/2017/06/02/156970_1496385001902.jpg-ssq75",
+                        "title": "心中有爱，盘中有蛋",
+                        "linkUrl": "/topic/5936",
+                        "schemeUrl": "yhouse://topic/5936",
+                        "linkName": "TOPIC",
+                        "linkType": 6,
+                        "pvUrl": null,
+                        "linkId": 5936,
+                        "xsort": 3,
+                        "actual": false
+                    },
+                    {
+                        "id": 0,
+                        "description": null,
+                        "picUrl": "http://p.yhres.com/topic/2017/05/31/156957_1496204021792.jpg-q75",
+                        "sPicUrl": "http://p.yhres.com/topic/2017/05/31/156957_1496204021792.jpg-ssq75",
+                        "title": "最爱不过一口明黄色的芒果鲜",
+                        "linkUrl": "/topic/5917",
+                        "schemeUrl": "yhouse://topic/5917",
+                        "linkName": "TOPIC",
+                        "linkType": 6,
+                        "pvUrl": null,
+                        "linkId": 5917,
+                        "xsort": 5,
+                        "actual": false
+                    },
+                    {
+                        "id": 2322,
+                        "description": null,
+                        "picUrl": "http://p.yhres.com/file/2017/05/19/1495161437043794.jpg-q75",
+                        "sPicUrl": "http://p.yhres.com/file/2017/05/19/1495161437043794.jpg-ssq75",
+                        "title": "YHOUSE全城美食通 一卡吃遍招牌菜",
+                        "linkUrl": "/my-member",
+                        "schemeUrl": "yhouse://my-member",
+                        "linkName": "APP",
+                        "linkType": 10,
+                        "pvUrl": "",
+                        "linkId": null,
+                        "xsort": 5,
+                        "actual": false
+                    },
+                    {
+                        "id": 0,
+                        "description": null,
+                        "picUrl": "http://p.yhres.com/topic/2017/05/19/156957_1495161142653.jpg-q75",
+                        "sPicUrl": "http://p.yhres.com/topic/2017/05/19/156957_1495161142653.jpg-ssq75",
+                        "title": "迷你小厨师的3D餐桌厨艺秀登陆北京",
+                        "linkUrl": "/topic/5295",
+                        "schemeUrl": "yhouse://topic/5295",
+                        "linkName": "TOPIC",
+                        "linkType": 6,
+                        "pvUrl": null,
+                        "linkId": 5295,
+                        "xsort": 6,
+                        "actual": false
+                    },
+                    {
+                        "id": 0,
+                        "description": null,
+                        "picUrl": "http://p.yhres.com/topic/2017/05/31/156970_1496228112834.jpg-q75",
+                        "sPicUrl": "http://p.yhres.com/topic/2017/05/31/156970_1496228112834.jpg-ssq75",
+                        "title": "尬聊English，不如尝尝同款美食搭配",
+                        "linkUrl": "/topic/5919",
+                        "schemeUrl": "yhouse://topic/5919",
+                        "linkName": "TOPIC",
+                        "linkType": 6,
+                        "pvUrl": null,
+                        "linkId": 5919,
+                        "xsort": 7,
+                        "actual": false
+                    },
+                    {
+                        "id": 0,
+                        "description": null,
+                        "picUrl": "http://p.yhres.com/topic/2017/06/01/156970_1496306384871.jpg-q75",
+                        "sPicUrl": "http://p.yhres.com/topic/2017/06/01/156970_1496306384871.jpg-ssq75",
+                        "title": "夏天里的美好甜点，都是青柠的味道",
+                        "linkUrl": "/topic/5925",
+                        "schemeUrl": "yhouse://topic/5925",
+                        "linkName": "TOPIC",
+                        "linkType": 6,
+                        "pvUrl": null,
+                        "linkId": 5925,
+                        "xsort": 8,
+                        "actual": false
+                    }
+                ],
+                "position": 1
+            }
+        ],
+        "bundle": [
+            {
+                "adsName": "bundle",
+                "id": 33,
+                "content": [
+                    {
+                        "id": 0,
+                        "description": null,
+                        "picUrl": "http://p.yhres.com/bundle/2017/05/26/1495780078901565.jpg-q75",
+                        "sPicUrl": "http://p.yhres.com/bundle/2017/05/26/1495780078901565.jpg-ssq75",
+                        "title": "网红招牌菜 打卡拔草趁现在",
+                        "linkUrl": "/topic/5836",
+                        "schemeUrl": "yhouse://topic/5836",
+                        "linkName": "TOPIC",
+                        "linkType": 6,
+                        "pvUrl": null,
+                        "linkId": 5836
+                    },
+                    {
+                        "id": 1262,
+                        "description": null,
+                        "picUrl": "http://p.yhres.com/bundle/2017/06/02/1496404292693919.jpg-q75",
+                        "sPicUrl": "http://p.yhres.com/bundle/2017/06/02/1496404292693919.jpg-ssq75",
+                        "title": "晒图有奖 景观餐厅测评",
+                        "linkUrl": "/share-tab?id=1703",
+                        "schemeUrl": "yhouse://share-tab?id=1703",
+                        "linkName": "APP",
+                        "linkType": 10,
+                        "pvUrl": "",
+                        "linkId": null
+                    },
+                    {
+                        "id": 0,
+                        "description": null,
+                        "picUrl": "http://p.yhres.com/bundle/2017/05/11/1494496417558218.jpg-q75",
+                        "sPicUrl": "http://p.yhres.com/bundle/2017/05/11/1494496417558218.jpg-ssq75",
+                        "title": "YHOUSE美食品鉴攻略",
+                        "linkUrl": "/topic/4582",
+                        "schemeUrl": "yhouse://topic/4582",
+                        "linkName": "TOPIC",
+                        "linkType": 6,
+                        "pvUrl": null,
+                        "linkId": 4582
+                    },
+                    {
+                        "id": 366,
+                        "description": null,
+                        "picUrl": "http://p.yhres.com/bundle/2017/05/26/1495794704845715.jpg-q75",
+                        "sPicUrl": "http://p.yhres.com/bundle/2017/05/26/1495794704845715.jpg-ssq75",
+                        "title": "全新的邀请有礼计划！",
+                        "linkUrl": "/my-vip-code",
+                        "schemeUrl": "yhouse://my-vip-code",
+                        "linkName": "APP",
+                        "linkType": 10,
+                        "pvUrl": "",
+                        "linkId": 0
+                    }
+                ],
+                "layout": 4,
+                "position": 1
+            }
+        ]
+    }
+}
