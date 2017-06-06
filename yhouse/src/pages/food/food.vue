@@ -1,16 +1,16 @@
 <template>
 	<div class="food">
-		<!-- <swiper></swiper> -->
+		<swiper></swiper>
 		<h1>food</h1>
 	</div>	
 </template>
 
 <script type="text/javascript">
-// import Swiper from './../components/swiper/swiper.vue'
+import Swiper from './../../components/swiper/swiper'
 export default{
 	name: 'food',
 	components: {
-		// Swiper
+		Swiper
 	}
 }
 

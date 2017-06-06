@@ -1,36 +1,70 @@
 <template>
-	<div class="swiper">
-		<div class="swiper-container">
-		    <div class="swiper-wrapper">
-		        <div class="swiper-slide">Slide 1</div>
-		        <div class="swiper-slide">Slide 2</div>
-		        <div class="swiper-slide">Slide 3</div>
-		    </div>
-		    <!-- 如果需要分页器 -->
-		    <div class="swiper-pagination"></div>
-		</div>
-	</div>
+<div class="swiper">
+    <swiper :options="swiperOption"  ref="mySwiper">  
+        <!-- 这部分放你要渲染的那些内容 -->  
+        <!-- <swiper-slide v-for="item in items">   -->
+        <!-- </swiper-slide>  -->
+        <swiper-slide>1</swiper-slide>
+        <swiper-slide>2</swiper-slide>
+        <swiper-slide>3</swiper-slide>
+        <!-- 这是轮播的小圆点 -->  
+        <div class="swiper-pagination" slot="pagination"></div>  
+    </swiper> 
+</div>  
 </template>
+
 <script>
-	import Swiper from './../../../static/js/swiper-3.4.2.jquery.min.js'
+	import { swiper, swiperSlide } from 'vue-awesome-swiper'  
+    export default {  
+        components: {  
+            swiper,  
+            swiperSlide  
+        },  
+        data() {  
+            return {  
+                swiperOption: {  
+                //是一个组件自有属性，如果notNextTick设置为true，组件则不会通过NextTick来实例化swiper，也就意味着你可以在第一时间获取到swiper对象，假如你需要刚加载遍使用获取swiper对象来做什么事，那么这个属性一定要是true  
+                loop: true,
+                autoplay: 3000,
+                // notNextTick: true,  
+                pagination: '.swiper-pagination',  
+                slidesPerView: 'auto',  
+                centeredSlides: true,  
+                paginationClickable: true,  
+                spaceBetween: 30,  
+                    onSlideChangeEnd: swiper => {  
+                        //这个位置放swiper的回调方法  
+                        this.page = swiper.realIndex+1;  
+                        this.index = swiper.realIndex;  
+                    }  
+                }  
+            }  
+        },  
+        //定义这个swiper对象  
+        computed: {  
+            swiper() {  
+              return this.$refs.mySwiper.swiper;  
+            },
 
-	export default {
-		name: 'swiper',
-		mounted(){
-			var mySwiper = new Swiper ('.swiper-container', {
-				 
-			    loop: true,
-			    autoplay: 4000,
-			    // 如果需要分页器
-			    pagination: '.swiper-pagination',
-			    
-			  })  
-		}
-		
-	} 
-
+        },  
+        //  mounted () {  
+        //     //这边就可以使用swiper这个对象去使用swiper官网中的那些方法 
+        //     console.log(this.swiper) 
+        //     this.swiper.slideTo(0, 0, false);  
+        // }  
+       
+  
+    }
 	       
 </script>
+
 <style>
-	@import "swiper-3.4.2.min.css"
+	body{
+		font-size: .12rem;
+	}
+	.swiper{
+		display: block;
+		width: 100%;
+		height: 1.934873rem;
+	}
 </style>
