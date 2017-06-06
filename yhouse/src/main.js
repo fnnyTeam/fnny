@@ -4,6 +4,9 @@ import Vue from 'vue'
 import App from './App'
 
 import router from './router/index'
+import axios from 'axios'
+
+Vue.prototype.axios = axios
 
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 Vue.use(VueAwesomeSwiper)
