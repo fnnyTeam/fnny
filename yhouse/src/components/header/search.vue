@@ -102,11 +102,12 @@ export default{
 		top: .45rem;
 		right: 0;
 		left: 0;
-		overflow: hidden;
+		overflow-x: hidden;
+		overflow-y: scroll;
 	}
 	.search_scroll .search_content{
 		margin-top: .15rem;
-		/*height: 1000px;*/
+		height: 1000px;
 	}
 	.search_list{
 		height: .4rem;

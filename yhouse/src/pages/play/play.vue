@@ -43,6 +43,7 @@
 			</div>
 			
 		</div>
+		<play-footer></play-footer>
 	</div>	
 </template>
 
@@ -178,12 +179,14 @@
 <script type="text/javascript">
 // 引入轮播图组件
 import playSwiper from './../../components/swiper/swiper'
+// 引入footer组件
+import playFooter from './../../components/footer/footer'
 
 export default{
 	name: 'play',
 	props: ['playswiper'],
 	components: {
-		playSwiper
+		playSwiper,playFooter
 	},
 	data(){
 		return {
