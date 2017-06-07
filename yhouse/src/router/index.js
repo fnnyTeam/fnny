@@ -33,5 +33,6 @@ const routes = [
 
 // 导出创建好的router的对象
 export default new VueRouter({
+	mode: 'history',
 	routes
 })

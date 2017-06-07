@@ -11,13 +11,8 @@ th, td, /*表格元素*/
 pre /*文本格式元素*/ {
     margin: 0;
 }
-<<<<<<< HEAD
-=======
 
-body{
-    font-size: 0.12rem;
-}
->>>>>>> ba9d29c76f6c56859fee83baa500fccdd9d52384
+
 /*清除内边距*/
 ul, ol, menu {
     padding: 0;
@@ -52,28 +47,4 @@ a:hover {
     content: '';
     display: block;
     clear: both;
-}
-body{
-    overflow-x: hidden;
-    background: #f4f4f4;
-    font-size: .12rem;
-}
-
-@media (-webkit-min-device-pixel-ratio: 3) and (max-device-width: 736px) and (min-device-width: 414px){
-    html{
-        font-size:110.4px;
-    }    
-}
-
-
-@media (-webkit-min-device-pixel-ratio: 2) and (max-device-width: 667px) and (min-device-width: 375px){
-    html{
-        font-size:85.33px;
-    }    
-}
-
-h1,h2,h3,h4,h5,h6{
-    font-size: 100%;
-    font-weight: 400;
-    font-family: inherit
 }
