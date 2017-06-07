@@ -1,7 +1,7 @@
 <template>
 	<div class="food">
 		<swiper :swiperdata = "swiperData"></swiper>
-		<h1>food</h1>
+		
 	</div>	
 </template>
 
