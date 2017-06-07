@@ -51,7 +51,7 @@ export default{
 	created(){
 		this.axios.get('static/data/data/play/playShopList.json').then(res => {
 			this.data = res.data.data.doc[1].itemData[0].content
-			console.log(this.data)
+			// console.log(this.data)
 		},err =>{
 			console.log(err)
 		},'json')
