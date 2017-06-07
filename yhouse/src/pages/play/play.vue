@@ -194,6 +194,7 @@ export default{
 			playData: [],
 			playSwiperData:[]
 		}
+
 	},
 	created(){
 		this.axios.get('static/data/data/play/playShopList.json').then(res => {
@@ -203,18 +204,18 @@ export default{
 			this.playSwiperData = res.data.data.extraData.rocket.reserveList.content
 			console.log(this.playSwiperData)
 		},err =>{
-			console.log(err)
+			console.log(err);
 		},'json')
 
 	},
 	
 
 	
-	/*created(){
-		this.axios.get('api').then(res => {
-		    console.log(res.data);
-		})
-	}*/
+	// created(){
+	// 	this.axios.get('api').then(res => {
+	// 	    console.log(res.data);
+	// 	})
+	// }
 }
 
 

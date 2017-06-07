@@ -55,14 +55,14 @@ export default{
 
 <style type="text/css">
 	.search_top{
-		position: absolute;
+		position: fixed;
 		top: 0;
 		right: 0;
 		left: 0;
 		height: .42rem;
 	    border-bottom: 1px solid #e1e1e1;
 	    background-color: #fff;
-	    /*z-index: 1000;*/
+	    z-index: 1000;
 	    font-size: .14rem;
 	}
 	.search_box{
@@ -86,6 +86,7 @@ export default{
 	.search_box>form>input{
 		border:none;
 		width: 100%;
+		outline: none;
 	}
 	.search_cancle{
 		width: .5rem;
