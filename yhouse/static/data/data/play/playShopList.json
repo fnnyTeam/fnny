@@ -698,7 +698,7 @@
         "extraData": {
             "rocket": {
                 "reserveBanner": [],
-                "reserveList": [
+                "reserveList": 
                     {
                         "adsName": "reserveList",
                         "position": 1,
@@ -750,7 +750,7 @@
                             }
                         ]
                     }
-                ]
+                
             }
         },
         "isEnd": 0,

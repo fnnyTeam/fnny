@@ -1,5 +1,7 @@
 <template>
 	<div id="play">
+		<!-- <p>{{ playSwiperData }}</p> -->
+		<play-swiper :swiperdata='playSwiperData'></play-swiper>
 		<!-- <h1>{{  data }}</h1> -->
 		<div class="play_container">
 			<!-- 时下最流行 时尚大作战 -->
@@ -174,12 +176,20 @@
 
 
 <script type="text/javascript">
+// 引入轮播图组件
+import playSwiper from './../../components/swiper/swiper'
+
 export default{
 	name: 'play',
+	props: ['playswiper'],
+	components: {
+		playSwiper
+	},
 	data(){
 		return {
 			data: [],
-			playData: []
+			playData: [],
+			playSwiperData:[]
 		}
 	},
 	created(){
@@ -187,18 +197,21 @@ export default{
 			this.data = res.data.data.doc[1].itemData[0].content
 			console.log(res.data)
 			this.playData = res.data.data.doc[3].itemData
+			this.playSwiperData = res.data.data.extraData.rocket.reserveList.content
+			console.log(this.playSwiperData)
 		},err =>{
 			console.log(err)
 		},'json')
 
-	}
+	},
+	
 
 	
-	// created(){
-	// 	this.axios.get('api').then(res => {
-	// 	    console.log(res.data);
-	// 	})
-	// }
+	/*created(){
+		this.axios.get('api').then(res => {
+		    console.log(res.data);
+		})
+	}*/
 }
 
 
