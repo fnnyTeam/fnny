@@ -178,11 +178,7 @@ export default{
 	name: 'play',
 	data(){
 		return {
-			data: []
-		}
-	},
-	playListData(){
-		return{
+			data: [],
 			playData: []
 		}
 	},
@@ -191,7 +187,6 @@ export default{
 			this.data = res.data.data.doc[1].itemData[0].content
 			console.log(res.data)
 			this.playData = res.data.data.doc[3].itemData
-			// console.log(this.playData)
 		},err =>{
 			console.log(err)
 		},'json')
