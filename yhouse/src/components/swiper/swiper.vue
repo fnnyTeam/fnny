@@ -44,6 +44,7 @@
 		left: 0;
 		width: 100%;
 		height: 1.8rem;
+		margin-bottom: 0.14rem;
 	}
 	.swiper-container img{
 		width: 100%;

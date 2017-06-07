@@ -9,10 +9,17 @@
           <router-link to='/choose' class="headerChoose" tag="div">筛选<span></span></router-link>
         </div>
         <div class="tabbar">
+<<<<<<< HEAD
           <router-link to='/food' tag="div"><span>美食</span></router-link>
           <router-link to='/play' tag="div"><span>玩乐</span></router-link>
           <router-link to='/life' tag="div"><span>夜生活</span></router-link>
           <router-link to='/spa' tag="div"><span>美容</span>/SPA</router-link>
+=======
+          <router-link to='/food'>food</router-link>
+          <router-link to='/play'>play</router-link>
+          <router-link to='/life'>life</router-link>
+          <router-link to='/spa'>spa</router-link>    
+>>>>>>> 9ce988919d3f6b8071959aac9507f51ad5f61c48
         </div>
       </div>
       <router-view></router-view>
