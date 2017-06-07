@@ -16,7 +16,6 @@
 </template>
 
 <script>
-    import Flexiblejs from './../../static/js/flexible.js'
 	 export default {
 	 	name: 'home'
 	 }

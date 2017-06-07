@@ -1,12 +1,10 @@
 <template>
 <div class="swiper">
     <swiper :options="swiperOption"  ref="mySwiper">  
-        <!-- 这部分放你要渲染的那些内容 -->  
-        <!-- <swiper-slide v-for="item in items">   -->
-        <!-- </swiper-slide>  -->
-        <swiper-slide>1</swiper-slide>
-        <swiper-slide>2</swiper-slide>
-        <swiper-slide>3</swiper-slide>
+        <!-- 这部分放你要渲染的那些内容 --> 
+	        <swiper-slide v-for="item in swiperdata"  :key="item.id">
+	        	<img :src="item.picUrl" alt="item.title">
+	        </swiper-slide> 
         <!-- 这是轮播的小圆点 -->  
         <div class="swiper-pagination" slot="pagination"></div>  
     </swiper> 
@@ -15,56 +13,61 @@
 
 <script>
 	import { swiper, swiperSlide } from 'vue-awesome-swiper'  
-    export default {  
+    export default {
+    	props: ['swiperdata'], 
         components: {  
             swiper,  
             swiperSlide  
         },  
         data() {  
             return {  
-                swiperOption: {  
-                //是一个组件自有属性，如果notNextTick设置为true，组件则不会通过NextTick来实例化swiper，也就意味着你可以在第一时间获取到swiper对象，假如你需要刚加载遍使用获取swiper对象来做什么事，那么这个属性一定要是true  
-                loop: true,
-                autoplay: 3000,
-                // notNextTick: true,  
-                pagination: '.swiper-pagination',  
-                slidesPerView: 'auto',  
-                centeredSlides: true,  
-                paginationClickable: true,  
-                spaceBetween: 30,  
-                    onSlideChangeEnd: swiper => {  
-                        //这个位置放swiper的回调方法  
-                        this.page = swiper.realIndex+1;  
-                        this.index = swiper.realIndex;  
-                    }  
-                }  
-            }  
-        },  
-        //定义这个swiper对象  
-        computed: {  
-            swiper() {  
-              return this.$refs.mySwiper.swiper;  
-            },
+                swiperOption: {
 
-        },  
-        //  mounted () {  
-        //     //这边就可以使用swiper这个对象去使用swiper官网中的那些方法 
-        //     console.log(this.swiper) 
-        //     this.swiper.slideTo(0, 0, false);  
-        // }  
-       
-  
+	                loop: true,
+	                autoplay: 3000,
+	                pagination: '.swiper-pagination', 
+	                paginationClickable: true
+
+                },
+                
+            }
+
+        },   
     }
 	       
 </script>
 
 <style>
-	body{
-		font-size: .12rem;
-	}
 	.swiper{
-		display: block;
+		position: relative;
+		top: 0;
+		left: 0;
 		width: 100%;
-		height: 1.934873rem;
+		height: 1.8rem;
+	}
+	.swiper-container img{
+		width: 100%;
+		height: 100%;
+	}
+	.swiper-container{
+		width: 100%;
+		height: 100%;
+	}
+	.swiper-pagination{
+		position: absolute;
+	    bottom: 10px;
+	    left: 50%;
+	    z-index: 400;
+	    width: 100%;
+	    padding-left: 0;
+	    text-align: center;
+	}
+	.swiper-pagination-bullet{
+		width: 0.04529rem;
+		height: 0.04529rem;
+		margin: 0 0.067935rem !important;
+	}
+	 .swiper-pagination-bullet-active{
+	 	background: rgba(255,255,255,.3);
 	}
 </style>

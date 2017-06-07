@@ -9,7 +9,9 @@ import axios from 'axios'
 Vue.prototype.axios = axios
 
 import VueAwesomeSwiper from 'vue-awesome-swiper'
-Vue.use(VueAwesomeSwiper)
+import Vuex from 'vuex'
+import store from './vuex/store'
+Vue.use(VueAwesomeSwiper, Vuex)
 
 Vue.config.productionTip = false
 
@@ -18,5 +20,5 @@ new Vue({
   el: '#app',
   template: '<App/>',
   components: { App },
-  router, VueAwesomeSwiper
+  router, VueAwesomeSwiper, axios,Vuex, store
 })

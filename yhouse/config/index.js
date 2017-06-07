@@ -28,7 +28,13 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-        
+        '/get': {
+            target: 'https://m.yhouse.com', // 目标地址
+            changeOrigin: true,
+            pathRewrite: {
+                '^/get': '/' // 名字
+            }
+        }
     },
     // CSS Sourcemaps off by default because relative paths are "buggy"
     // with this option, according to the CSS-Loader README
