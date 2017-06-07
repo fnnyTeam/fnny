@@ -1,0 +1,31 @@
+{
+    "code": "0",
+    "data": [
+        {
+            "icon": "http://r.yhres.com/search2/district@2x.png",
+            "itemList": [
+                "三里屯",
+                "工人体育场",
+                "王府井/东单"
+            ]
+        },
+        {
+            "icon": "http://r.yhres.com/search2/all@2x.png",
+            "itemList": [
+                "云贵菜",
+                "意大利菜",
+                "时尚生活"
+            ]
+        },
+        {
+            "icon": "http://r.yhres.com/search2/hot_normal@2x.png",
+            "itemList": [
+                "西餐",
+                "日料",
+                "自助"
+            ]
+        }
+    ],
+    "detail": "",
+    "message": "success"
+}

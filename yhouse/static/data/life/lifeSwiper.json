@@ -1,0 +1,62 @@
+{
+    "code": "0",
+    "message": "success",
+    "detail": "",
+    "data": {
+        "reserveBanner": [],
+        "reserveList": [
+            {
+                "adsName": "reserveList",
+                "content": [
+                    {
+                        "id": 0,
+                        "description": null,
+                        "picUrl": "http://p.yhres.com/topic/2017/04/17/156762_1492419865214.jpg-q75",
+                        "sPicUrl": "http://p.yhres.com/topic/2017/04/17/156762_1492419865214.jpg-ssq75",
+                        "title": "如何做个合格的雪莉酒大咖",
+                        "linkUrl": "/topic/5329",
+                        "schemeUrl": "yhouse://topic/5329",
+                        "linkName": "TOPIC",
+                        "linkType": 6,
+                        "pvUrl": null,
+                        "linkId": 5329,
+                        "xsort": 1,
+                        "actual": false
+                    },
+                    {
+                        "id": 0,
+                        "description": null,
+                        "picUrl": "http://p.yhres.com/topic/2017/03/09/156957_1489054506237.jpg-q75",
+                        "sPicUrl": "http://p.yhres.com/topic/2017/03/09/156957_1489054506237.jpg-ssq75",
+                        "title": "如何一键点亮酒吧达人技能树",
+                        "linkUrl": "/topic/4397",
+                        "schemeUrl": "yhouse://topic/4397",
+                        "linkName": "TOPIC",
+                        "linkType": 6,
+                        "pvUrl": null,
+                        "linkId": 4397,
+                        "xsort": 2,
+                        "actual": false
+                    },
+                    {
+                        "id": 0,
+                        "description": null,
+                        "picUrl": "http://p.yhres.com/topic/2017/02/09/156957_1486607613117.jpg-q75",
+                        "sPicUrl": "http://p.yhres.com/topic/2017/02/09/156957_1486607613117.jpg-ssq75",
+                        "title": "比送她10支口红更管用的鸡尾酒是什么？",
+                        "linkUrl": "/topic/4043",
+                        "schemeUrl": "yhouse://topic/4043",
+                        "linkName": "TOPIC",
+                        "linkType": 6,
+                        "pvUrl": null,
+                        "linkId": 4043,
+                        "xsort": 3,
+                        "actual": false
+                    }
+                ],
+                "position": 1
+            }
+        ],
+        "bundle": []
+    }
+}
