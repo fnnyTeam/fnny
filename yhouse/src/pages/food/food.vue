@@ -1,9 +1,13 @@
 <template>
 	<div class="food">
 		<swiper :swiperdata = "swiperData"></swiper>
+<<<<<<< HEAD
 		<jx-theme :jxThemeData = "jxThemeData"></jx-theme>
 		<shop-list :shopData="shopData"></shop-list>
 		<my-footer></my-footer>
+=======
+		
+>>>>>>> aa0b7bd115002a4448b84cb0114a23115c2f213b
 	</div>	
 </template>
 
