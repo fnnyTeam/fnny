@@ -113,7 +113,7 @@
 	    font-size: .14rem;
 	    padding-right: .1rem;
 	    background: url(http://r.yhres.com/sku/icon_allow@2x.png) right center no-repeat;
-	    background-size: .05srem auto;
+	    background-size: .05rem auto;
 	}
 	.shopList_introduce_address{
 		font-size: .14rem;
