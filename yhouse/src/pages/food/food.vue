@@ -1,11 +1,11 @@
 <template>
 	<div class="food">
+		<swiper :swiperdata = "swiperData"></swiper>
 		<div class="food_banner">
 			<div class="food_bannerPic" v-for="item in bannerData">
 				<a href=""><img :src="item.picUrl" alt=""></a>
 			</div>
 		</div>
-		<swiper :swiperdata = "swiperData"></swiper>
 		<jx-theme :jxThemeData = "jxThemeData"></jx-theme>
 		<shop-list :shopData="shopData"></shop-list>
 		<div class="load_more unload">查看更多</div>
