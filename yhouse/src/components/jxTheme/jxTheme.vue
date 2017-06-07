@@ -3,7 +3,7 @@
 		<div class="jxTheme_list">
 			<h2>精选推荐专题</h2>
 			<p>小编为你整理的品质好店</p>
-			<div class="jxTheme_pic" v-for="item in data">
+			<div class="jxTheme_pic" v-for="item in jxThemeData">
 				<div class="jxTheme_pic_icon">
 					<img :src="item.picUrl">
 				</div>
@@ -20,20 +20,7 @@
 <script type="text/javascript">
 export default{
 	name: 'jxTheme',
-	data () {
-		return {
-			data: []
-		}
-	},
-	created () {
-		this.axios.get('./static/data/food/shopList.json')
-		.then(res=>{
-			//console.log(res.data.data.doc[2].itemData);
-			this.data = res.data.data.doc[2].itemData
-		},err=>{
-			console.log(err);
-		})
-	},
+	props: ['jxThemeData'],
 }
 </script>
 

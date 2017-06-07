@@ -1,7 +1,7 @@
 <template>
 	<div class="shopList">
 		<ul>
-			<li v-for="item in data" class="shopList_li">
+			<li v-for="item in shopData" class="shopList_li">
 				<div class="shopList_title">
 					<img :src="item.logoUrl" class="shopList_title_icon">
 					<h2 class="shopList_title_content">{{ item.title }}</h2>
@@ -14,7 +14,7 @@
 					<p class="shopList_introduce_title">{{ item.highLigth }}</p>
 					<span class="shopList_introduce_enter">进店逛逛</span>
 					<p class="shopList_introduce_address">{{ item.businessesDistrict }}<em>|</em>{{ item.cuisineStyle }}</p>
-					<!-- <span v-for="i in data.commentTags" v-show="data.commentTags != ''">{{ i }}</span> -->
+					<span class="shopList_introduce_comment" v-for="i,index in item.commentTags" >{{ i }}</span>
 				</div>
 			</li>
 		</ul>
@@ -24,17 +24,8 @@
 <script type="text/javascript">
 	export default{
 		name: 'shopList',
-		data () {
-			return{
-				data: []
-			}
-		},
-		created () {
-			this.axios.get('./static/data/food/shopList.json').then(res => {
-				// console.log(res.data.data.doc[3].itemData);
-				this.data = res.data.data.doc[3].itemData;
-			})
-		}
+		props: ['shopData', 'tagData'],
+		
 	}
 </script>
 
@@ -119,5 +110,17 @@
 		font-size: .14rem;
     	line-height: .28rem;
     	
+	}
+	.shopList_introduce_comment{
+		float: left;
+	    height: 25px;
+	    border: 1px solid #ddd;
+	    color: #555;
+	    font-size: 9pt;
+	    text-align: center;
+	    line-height: 25px;
+	    padding: 0 9px;
+	    border-radius: 20px;
+	    margin-right: 7px;
 	}
 </style>
