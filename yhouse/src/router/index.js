@@ -33,9 +33,9 @@ const routes = [
 	{path: '/city',component: City},
 	{path: '/choose',component: Choose},
 	{path: '/search',component: Search},
-	{path: '/search:id',component: PlayDetail},
-	{path: '/topic:id',component: Topic},
-	{path: '/host:id',component: Host},
+	{path: '/playdetail',component: PlayDetail},
+	{path: '/topic',component: Topic},
+	{path: '/host',component: Host},
 ]
 
 // 导出创建好的router的对象
