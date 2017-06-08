@@ -68,20 +68,21 @@
     color: #111;
     font-family: NotoSansHans-Regular;
 }
-
+</style>
 	
 	
 
 <script>
-	 export default {
-	   name: 'home',
-     data(){
-          return {
+export default {
+    name: 'home',
+    data(){
+        return {
             thiscity:"北京"
-          }
-     }
-	 }
+        }
+    }
+}
 </script>
+
 <style>
 .header{
   background-color: white;

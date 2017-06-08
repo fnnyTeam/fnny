@@ -6,7 +6,7 @@
 					<input type="" name="" placeholder="请输入商家、商圈、菜系、活动…">
 				</form>
 			</div>
-			<div class="search_cancle">取消</div>
+			<div class="search_cancle" @click='searchGoBack'>取消</div>
 		</div>
 		<div class="search_scroll">
 			<div class="search_content">
@@ -37,6 +37,11 @@
 <script type="text/javascript">
 export default{
 	name: 'search',
+	methods:{
+		searchGoBack(){
+			history.back()
+		}
+	},
 	data(){
 		return {
 			searchData:[],

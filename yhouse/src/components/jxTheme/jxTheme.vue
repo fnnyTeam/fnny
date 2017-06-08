@@ -4,6 +4,7 @@
 			<h2>精选推荐专题</h2>
 			<p>小编为你整理的品质好店</p>
 			<div class="jxTheme_pic" v-for="item in jxThemeData">
+				<div class="jxTheme_pic_lightBox"></div>
 				<div class="jxTheme_pic_icon">
 					<img :src="item.picUrl">
 				</div>
@@ -38,6 +39,7 @@ export default{
 	#jxTheme .jxTheme_list{
 		background: #fff;
 		margin-bottom: .11rem;
+		padding-bottom: 0.02rem;
 	}
 
 	#jxTheme .jxTheme_pic{
@@ -83,6 +85,14 @@ export default{
 		left: 0;
 		width: 100%;
 	} 
+	#jxTheme .jxTheme_pic_lightBox{
+		position: absolute;
+		left: .15rem;
+		right: .15rem;
+		top: 0;
+		bottom: 0;
+		background-color: rgba(0,0,0,.4);
+	}
 	#jxTheme .jxTheme_pic_content>h2{
 		width: 90%;
 	    top: .18rem;
@@ -108,7 +118,7 @@ export default{
 	    padding-right: .09rem;
 	    font-size: .12rem;
 	    line-height: .16rem;
-	    background: url(http://m.yhouse.com/img/spring_guide_arrow_2017.png) right center no-repeat;
+	    background: url(../../../static/imgs/jxTheme/jxTheme_icon.png) right center no-repeat;
 	    background-size: .06rem auto;
 	}
 	.jxTheme_position{
