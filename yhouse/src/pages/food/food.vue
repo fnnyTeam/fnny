@@ -1,11 +1,13 @@
 <template>
 	<div class="food">
 		<swiper :swiperdata = "swiperData"></swiper>
+
 		<div class="food_banner">
 			<div class="food_bannerPic" v-for="item in bannerData">
 				<a href=""><img :src="item.picUrl" alt=""></a>
 			</div>
 		</div>
+
 		<jx-theme :jxThemeData = "jxThemeData"></jx-theme>
 		<shop-list :shopData="shopData"></shop-list>
 		<div class="load_more unload">查看更多</div>
@@ -51,36 +53,23 @@ export default{
 			bannerData: [],
 			jxThemeData: [],
 			shopData: []
+
 		}
 
 	},
 	created () {
-		this.axios.get('static/data/data/food/jxtheme.json').then(res => {
-			this.swiperData = res.data.data.reserveList[0].content
-			this.bannerData = res.data.data.bundle[0].content
-			console.log(this.bannerData)
-			
+		
+		this.axios.get('api/api/m/catalogData/list-v4.0?catalogId=2&cityId=1&page=1&pageSize=10&siteId=-1').then(res => {
+			this.jxThemeData = res.data.data.doc[2].itemData
+			this.shopData = res.data.data.doc[3].itemData
+
+			this.swiperData = res.data.data.extraData.rocket.reserveList[0].content
+			this.bannerData = res.data.data.doc[1].itemData[0].content
 		},err =>{
 
 			console.log(err)
 		},'json')
 		
-
-	
-		this.axios.get('./static/data/food/shopList.json')
-		.then(res=>{
-			//console.log(res.data.data.doc[2].itemData);
-			this.jxThemeData = res.data.data.doc[2].itemData
-		},err=>{
-			console.log(err);
-		});
-		this.axios.get('./static/data/food/shopList.json')
-		.then(res => {
-			//console.log(res.data.data.doc[3].itemData[5].commentTags);
-			this.shopData = res.data.data.doc[3].itemData;
-		},err=>{
-			console.log(err);
-		},'json');
 
 	},
 

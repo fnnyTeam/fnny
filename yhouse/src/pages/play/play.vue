@@ -13,27 +13,25 @@
 
 			<!-- 游玩列表 -->
 			<div class="play_list">
-				<section v-for='item in playData'>
-					<a href="">
-						<!-- 图片 -->
-						<div class="play_pic">
-							<img :src="item.picUrl">
+				<section v-for='item in playData' @click='goDetail($route.params.id)'>
+					<!-- 图片 -->
+					<div class="play_pic">
+						<img :src="item.picUrl">
+					</div>
+					<!-- 内容 -->
+					<div class="play_content">
+						<!-- 内容标题 -->
+						<p class="play_title">{{ item.title }}</p>
+						<!-- 内容价格 -->
+						<div class="play_info clear">
+							<p class="play_cityName">{{ item.cityName }}<em> | </em>{{ item.hostName}}</p>
+							<p class="play_price">{{ item.neededCredits}}<!-- <em>元/1人</em> --></p>
 						</div>
-						<!-- 内容 -->
-						<div class="play_content">
-							<!-- 内容标题 -->
-							<p class="play_title">{{ item.title }}</p>
-							<!-- 内容价格 -->
-							<div class="play_info clear">
-								<p class="play_cityName">{{ item.cityName }}<em> | </em>{{ item.hostName}}</p>
-								<p class="play_price">{{ item.neededCredits}}<!-- <em>元/1人</em> --></p>
-							</div>
-							<!-- 内容主题 -->
-							<p class="play_tag">
-								<span>{{ item.categorys[0] }}</span>
-							</p>
-						</div>
-					</a>
+						<!-- 内容主题 -->
+						<p class="play_tag">
+							<span>{{ item.categorys[0] }}</span>
+						</p>
+					</div>
 				</section>
 			</div>
 			<!-- 查看更多 -->
@@ -188,6 +186,17 @@ export default{
 	components: {
 		playSwiper,playFooter
 	},
+	methods:{
+		goDetail(){
+			// 实现路由跳转，并传递参数
+			this.$router.push({
+				path: '/playDetail/a',
+				query:{
+					id: ''
+				} 
+			})
+		}
+	},
 	data(){
 		return {
 			data: [],
@@ -205,12 +214,12 @@ export default{
 			console.log(this.playSwiperData)
 		},err =>{
 			console.log(err);
-		},'json')
+		},'json')	
 
-	},
+	}
+
 	
 
-	
 	// created(){
 	// 	this.axios.get('api').then(res => {
 	// 	    console.log(res.data);

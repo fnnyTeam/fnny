@@ -8,6 +8,8 @@ import axios from 'axios'
 
 Vue.prototype.axios = axios
 
+axios.defaults.headers.get['YhouseSiteVersion'] = '4.3'
+
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 
 Vue.use(VueAwesomeSwiper)
