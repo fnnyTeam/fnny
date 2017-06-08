@@ -24,25 +24,19 @@ export default{
 			swiperData: []
 		}
 	},
-	created () {
-		this.axios.get('static/data/data/spa/spaShopList.json').then(res => {
+	mounted () {
+		this.axios.get('api/api/m/catalogData/list-v4.0?catalogId=12&cityId=1&page=1&pageSize=10&siteId=-1').then(res => {
 			this.swiperData = res.data.data.extraData.rocket.reserveList[0].content
-			// console.log(res.data.data.extraData.rocket.reserveList[0].content)
+			
+			this.jxThemeData = res.data.data.doc[2].itemData
+
+			this.shopData = res.data.data.doc[3].itemData;
+
 		},err =>{
 			console.log(err);
-		},'json');
-		this.axios.get('./static/data/spa/spaShopList.json')
-		.then(res=>{
-			//console.log(res.data.data.doc[2].itemData);
-			this.jxThemeData = res.data.data.doc[2].itemData
-		},err=>{
-			console.log(err);
-		});
-		this.axios.get('./static/data/spa/spaShopList.json')
-		.then(res => {
-			//console.log(res.data.data.doc[3].itemData[5].commentTags);
-			this.shopData = res.data.data.doc[3].itemData;
-		})
+		},'json')
+		
+		
 	},
 
 	components: {
