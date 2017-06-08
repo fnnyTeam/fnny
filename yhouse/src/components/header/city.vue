@@ -41,6 +41,7 @@ export default{
      	changecity(key){	
      		this.bus.currentIndex.city =  event.target.innerHTML;
      		this.bus.cityId = key;
+     		// this.bus.cityDate = key;
      		// console.log(this.bus.cityId);
      		history.back();
      	}
@@ -89,11 +90,13 @@ export default{
 	color: #adadad;
 }
 .cityGroup ul{
+
 	display: flex;
 	flex-wrap: wrap;
 	text-align: center;
 	font-size: .13rem;
 	margin-bottom: .2rem;
+	padding: 0;
 }
 .cityGroup li{
 	width: 32%;
