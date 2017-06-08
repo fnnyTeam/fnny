@@ -1,21 +1,17 @@
 <template>
 	<div class="food">
 		<swiper :swiperdata = "swiperData"></swiper>
-<<<<<<< HEAD
+
 		<div class="food_banner">
 			<div class="food_bannerPic" v-for="item in bannerData">
 				<a href=""><img :src="item.picUrl" alt=""></a>
 			</div>
 		</div>
-=======
-<<<<<<< HEAD
+
 		<jx-theme :jxThemeData = "jxThemeData"></jx-theme>
 		<shop-list :shopData="shopData"></shop-list>
 		<my-footer></my-footer>
-=======
-		
->>>>>>> aa0b7bd115002a4448b84cb0114a23115c2f213b
->>>>>>> ba9d29c76f6c56859fee83baa500fccdd9d52384
+
 	</div>	
 </template>
 <style type="text/css">
@@ -57,45 +53,37 @@ export default{
 	data () {
 		return {
 			swiperData: [],
-<<<<<<< HEAD
-			bannerData: []
-=======
+
+			bannerData: [],
+
 			jxThemeData: [],
 			shopData: []
->>>>>>> ba9d29c76f6c56859fee83baa500fccdd9d52384
+
 		}
 	},
 	created () {
-		this.axios.get('static/data/data/food/jxtheme.json').then(res => {
-			this.swiperData = res.data.data.reserveList[0].content
-			this.bannerData = res.data.data.bundle[0].content
-			console.log(this.bannerData)
+		
+		this.axios.get('api/api/m/catalogData/list-v4.0?catalogId=2&cityId=1&page=1&pageSize=10&siteId=-1').then(res => {
+			this.jxThemeData = res.data.data.doc[2].itemData
+			this.shopData = res.data.data.doc[3].itemData
 			
 		},err =>{
-<<<<<<< HEAD
+
 			console.log(err)
 		},'json')
-		
-=======
-			console.log(err);
-		},'json');
-		this.axios.get('./static/data/food/shopList.json')
-		.then(res=>{
-			//console.log(res.data.data.doc[2].itemData);
-			this.jxThemeData = res.data.data.doc[2].itemData
-		},err=>{
-			console.log(err);
-		});
-		this.axios.get('./static/data/food/shopList.json')
-		.then(res => {
-			//console.log(res.data.data.doc[3].itemData[5].commentTags);
-			this.shopData = res.data.data.doc[3].itemData;
-		})
+		this.axios.get('api/api/rocket/launch?siteId=m&catalogId=2&cityId=1&ts=1496884121310&type=100,101,103').then(res => {
+			
+			this.swiperData = res.data.data.reserveList[0].content
+			this.bannerData = res.data.data.bundle[0].content
+	
+		},err =>{
+
+			console.log(err)
+		},'json')
 	},
 
 	components: {
 		jxTheme, shopList, Swiper, myFooter
->>>>>>> ba9d29c76f6c56859fee83baa500fccdd9d52384
 	}
 
 }

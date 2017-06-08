@@ -12,9 +12,7 @@ pre /*文本格式元素*/ {
     margin: 0;
 }
 
-body{
-    font-size: 0.12rem;
-}
+
 /*清除内边距*/
 ul, ol, menu {
     padding: 0;
