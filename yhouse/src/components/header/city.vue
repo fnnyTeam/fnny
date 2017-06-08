@@ -4,11 +4,11 @@
 			<div @click="back"></div>
 			<p>选择城市</p>
 		</div>
-		<div class="thisCity"><span>当前城市</span>：{{thiscity}}</div>
+		<div class="thisCity"><span>当前城市</span>：{{currentcity}}</div>
 		<div class="cityGroup" v-for="(cityId,group) in citygroup">
 			<p>{{group}}</p>
 			<ul class="groupBox">
-				<li v-for="key in cityId"  @click="changecity">{{ citys[key].name }}</li>
+				<li v-for="key in cityId"   @click="changecity">{{ citys[key].name }}</li>
 			</ul>
 		</div>
 	</div>	
@@ -18,12 +18,11 @@
 
 export default{
 	name: 'city',
-	
     data(){
         return {
+          currentcity:'bj',
           citygroup:[],
-          citys:[],
-          thiscity:"北京"
+          citys:[]
         };
     },
     created(){
@@ -31,17 +30,19 @@ export default{
         
            	this.citygroup = res.data.cityGroup;
            	this.citys = res.data.city;
-        console.log(res.data.city);
+       	// console.log(res.data.city);
         },err =>{
             console.log(err)
-        },'json')
+        },'json');
     },
     methods:{
      	back(){
      		history.back()
      	},
      	changecity(event){
-     		this.thiscity = event.target.innerHTML;
+     		this.currentcity = event.target.innerHTML;    		
+     		this.bus.$emit("changecity", this.currentcity);
+
      		// history.back() 
      	}
     }

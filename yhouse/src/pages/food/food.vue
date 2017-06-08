@@ -1,27 +1,17 @@
 <template>
 	<div class="food">
 		<swiper :swiperdata = "swiperData"></swiper>
-<<<<<<< HEAD
 		<jx-theme :jxThemeData = "jxThemeData"></jx-theme>
 		<shop-list :shopData="shopData"></shop-list>
 		<my-footer></my-footer>
-=======
-<<<<<<< HEAD
 		<div class="food_banner">
 			<div class="food_bannerPic" v-for="item in bannerData">
 				<a href=""><img :src="item.picUrl" alt=""></a>
 			</div>
 		</div>
-=======
-<<<<<<< HEAD
 		<jx-theme :jxThemeData = "jxThemeData"></jx-theme>
 		<shop-list :shopData="shopData"></shop-list>
 		<my-footer></my-footer>
-=======
-		
->>>>>>> aa0b7bd115002a4448b84cb0114a23115c2f213b
->>>>>>> ba9d29c76f6c56859fee83baa500fccdd9d52384
->>>>>>> 9ce988919d3f6b8071959aac9507f51ad5f61c48
 	</div>	
 </template>
 <style type="text/css">
@@ -49,26 +39,19 @@
 	}
 </style>
 <script type="text/javascript">
-
-
-
 import jxTheme from '../../components/jxTheme/jxTheme'
 import shopList from '../../components/shopList/shopList'
 import Swiper from './../../components/swiper/swiper'
 import myFooter from './../../components/footer/footer'
-
 export default{
 	name: 'food',
 
 	data () {
 		return {
 			swiperData: [],
-<<<<<<< HEAD
-			bannerData: []
-=======
+			bannerData: [],
 			jxThemeData: [],
 			shopData: []
->>>>>>> ba9d29c76f6c56859fee83baa500fccdd9d52384
 		}
 	},
 	created () {
@@ -78,12 +61,7 @@ export default{
 			console.log(this.bannerData)
 			
 		},err =>{
-<<<<<<< HEAD
 			console.log(err)
-		},'json')
-		
-=======
-			console.log(err);
 		},'json');
 		this.axios.get('./static/data/food/shopList.json')
 		.then(res=>{
@@ -101,15 +79,10 @@ export default{
 
 	components: {
 		jxTheme, shopList, Swiper, myFooter
->>>>>>> ba9d29c76f6c56859fee83baa500fccdd9d52384
 	}
 
 }
 
 </script>
-
-<style type="text/css">
-
-</style>
 
 

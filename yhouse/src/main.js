@@ -8,6 +8,9 @@ import axios from 'axios'
 
 Vue.prototype.axios = axios
 
+let bus = new Vue()
+Vue.prototype.bus = bus
+
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 
 Vue.use(VueAwesomeSwiper)
