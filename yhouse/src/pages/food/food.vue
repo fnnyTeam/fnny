@@ -11,6 +11,7 @@
 		</div>
 		<jx-theme :jxThemeData = "jxThemeData"></jx-theme>
 		<shop-list :shopData="shopData"></shop-list>
+		<div class="load_more unload">查看更多</div>
 		<my-footer></my-footer>
 	</div>	
 </template>
@@ -22,7 +23,6 @@
 		width: 100%;
 		height: 1.5rem;
 		margin-bottom: 0.099638rem;
-		
 	}
 	.food_bannerPic{
 		width: 48.5%;
@@ -45,36 +45,50 @@ import Swiper from './../../components/swiper/swiper'
 import myFooter from './../../components/footer/footer'
 export default{
 	name: 'food',
-
 	data () {
 		return {
 			swiperData: [],
 			bannerData: [],
 			jxThemeData: [],
-			shopData: []
+			shopData: [],
+			cityId:this.bus.cityId
 		}
 	},
 	created () {
-		this.axios.get('static/data/data/food/jxtheme.json').then(res => {
+		console.log(this.cityId);
+		this.axios.get('api/api/m/catalogData/list-v4.0?catalogId=2&cityId=1&page=1&pageSize=10&siteId=-1').then(res => {
+			this.jxThemeData = res.data.data.doc[2].itemData
+			this.shopData = res.data.data.doc[3].itemData
+			
+		},err =>{
+
+			console.log(err)
+		},'json')
+		this.axios.get('api/api/rocket/launch?siteId=m&catalogId=2&cityId=1&ts=1496884121310&type=100,101,103').then(res => {
+			
 			this.swiperData = res.data.data.reserveList[0].content
 			this.bannerData = res.data.data.bundle[0].content
-			console.log(this.bannerData)
-			
+	
 		},err =>{
 			console.log(err)
 		},'json');
+
 		this.axios.get('./static/data/food/shopList.json')
 		.then(res=>{
 			//console.log(res.data.data.doc[2].itemData);
 			this.jxThemeData = res.data.data.doc[2].itemData
-		},err=>{
+		},err =>{
 			console.log(err);
-		});
+		},'json');
+
 		this.axios.get('./static/data/food/shopList.json')
 		.then(res => {
 			//console.log(res.data.data.doc[3].itemData[5].commentTags);
 			this.shopData = res.data.data.doc[3].itemData;
-		})
+		},err =>{
+			console.log(err);
+		},'json')
+
 	},
 
 	components: {
@@ -85,4 +99,30 @@ export default{
 
 </script>
 
+<<<<<<< HEAD
+=======
+<style type="text/css">
+	.load_more{
+		height: 42px;
+		line-height: 42px;
+		text-align: center;
+		background-color: #fff;
+		color: #555;
+		font-size: 14px;
+		border-top: 1px solid #eee;
+	}
+	.load_more:after{
+		position: relative;
+		width: 15px;
+		height: 8px;
+		top: -1px;
+		background: url(../../../static/imgs/play/icon.png) no-repeat;
+		background-size: 40px auto;
+		content: "";
+		display: inline-block;
+		margin-left: 5px;
+	}
+</style>
+
+>>>>>>> 4214704d05ba5058ff344efb0c7d2537ecbeb1ec
 

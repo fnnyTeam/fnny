@@ -8,9 +8,14 @@ import axios from 'axios'
 
 Vue.prototype.axios = axios
 
-let bus = new Vue()
+let bus = new Vue({
+	data:{
+		currentIndex:{city:'北京'},
+		cityId:1
+	}
+})
 Vue.prototype.bus = bus
-
+axios.defaults.headers.get['YhouseSiteVersion'] = '4.3'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 
 Vue.use(VueAwesomeSwiper)

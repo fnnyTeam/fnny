@@ -185,18 +185,13 @@ export default{
 	created(){
 		this.axios.get('static/data/data/play/playShopList.json').then(res => {
 			this.data = res.data.data.doc[1].itemData[0].content;
-			console.log(res.data);
+			// console.log(res.data);
 			this.playData = res.data.data.doc[3].itemData;
 		},err =>{
 			console.log(err);
-		},'json')
+		},'json')	
 
-	}	
-	// created(){
-	// 	this.axios.get('api').then(res => {
-	// 	    console.log(res.data);
-	// 	})
-	// }
+	}
 }
 
 

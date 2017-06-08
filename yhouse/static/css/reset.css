@@ -11,9 +11,13 @@ th, td, /*表格元素*/
 pre /*文本格式元素*/ {
     margin: 0;
 }
+<<<<<<< HEAD
 body{
     font-size: 0.12rem;
 }
+=======
+
+>>>>>>> 4214704d05ba5058ff344efb0c7d2537ecbeb1ec
 /*清除内边距*/
 ul, ol, menu {
     padding: 0;

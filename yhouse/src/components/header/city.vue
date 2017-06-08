@@ -8,19 +8,18 @@
 		<div class="cityGroup" v-for="(cityId,group) in citygroup">
 			<p>{{group}}</p>
 			<ul class="groupBox">
-				<li v-for="key in cityId"   @click="changecity">{{ citys[key].name }}</li>
+				<li v-for="key in cityId"   @click="changecity(key)">{{ citys[key].name }}</li>
 			</ul>
 		</div>
 	</div>	
 </template>
 
 <script type="text/javascript">
-
 export default{
 	name: 'city',
     data(){
         return {
-          currentcity:'bj',
+          currentcity:this.bus.currentIndex.city,
           citygroup:[],
           citys:[]
         };
@@ -30,7 +29,7 @@ export default{
         
            	this.citygroup = res.data.cityGroup;
            	this.citys = res.data.city;
-       	// console.log(res.data.city);
+       		// console.log(res.data.city);
         },err =>{
             console.log(err)
         },'json');
@@ -39,11 +38,11 @@ export default{
      	back(){
      		history.back()
      	},
-     	changecity(event){
-     		this.currentcity = event.target.innerHTML;    		
-     		this.bus.$emit("changecity", this.currentcity);
-
-     		// history.back() 
+     	changecity(key){	
+     		this.bus.currentIndex.city =  event.target.innerHTML;
+     		this.bus.cityId = key;
+     		// console.log(this.bus.cityId);
+     		// history.back();
      	}
     }
 }

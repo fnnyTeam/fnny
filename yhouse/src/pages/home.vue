@@ -2,8 +2,8 @@
 	 <div class="home">
       <div class="header">
         <div class="headerTop">
-          <router-link to='/city' class="headerCity" tag="div" v-text="currentcity">
-             <span ></span></router-link>
+          <router-link to='/city' class="headerCity" tag="div">
+          {{currentcity}} <span ></span></router-link>
           <router-link to='/search' class="search" tag="div">
             <input id="searchInput" type="text" placeholder="请输入商家、商圈、菜系、活动">
           </router-link>
@@ -23,22 +23,10 @@
 <script>
 	 export default {
      name: 'home',
-
      data(){
         return {
-          currentcity:"北京"
+          currentcity: this.bus.currentIndex.city
         }
-     },
-     methods:{
-
-     },
-     created(){
-        // console.log(this.currentcity)
-        this.bus.$on("changecity", data => {
-          console.log("00" + this)
-          this.currentcity = data;
-          console.log(this.currentcity);
-        })
      }
 	 }
 </script>
