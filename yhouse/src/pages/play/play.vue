@@ -1,5 +1,7 @@
 <template>
 	<div id="play">
+		<!-- <p>{{ playSwiperData }}</p> -->
+		<play-swiper :swiperdata='playSwiperData'></play-swiper>
 		<!-- <h1>{{  data }}</h1> -->
 		<div class="play_container">
 			<!-- 时下最流行 时尚大作战 -->
@@ -11,27 +13,25 @@
 
 			<!-- 游玩列表 -->
 			<div class="play_list">
-				<section v-for='item in playData'>
-					<a href="">
-						<!-- 图片 -->
-						<div class="play_pic">
-							<img :src="item.picUrl">
+				<section v-for='item in playData' @click='goDetail(item.id)'>
+					<!-- 图片 -->
+					<div class="play_pic">
+						<img :src="item.picUrl">
+					</div>
+					<!-- 内容 -->
+					<div class="play_content">
+						<!-- 内容标题 -->
+						<p class="play_title">{{ item.title }}</p>
+						<!-- 内容价格 -->
+						<div class="play_info clear">
+							<p class="play_cityName">{{ item.cityName }}<em> | </em>{{ item.hostName}}</p>
+							<p class="play_price">{{ item.neededCredits}}<!-- <em>元/1人</em> --></p>
 						</div>
-						<!-- 内容 -->
-						<div class="play_content">
-							<!-- 内容标题 -->
-							<p class="play_title">{{ item.title }}</p>
-							<!-- 内容价格 -->
-							<div class="play_info clear">
-								<p class="play_cityName">{{ item.cityName }}<em> | </em>{{ item.hostName}}</p>
-								<p class="play_price">{{ item.neededCredits}}<!-- <em>元/1人</em> --></p>
-							</div>
-							<!-- 内容主题 -->
-							<p class="play_tag">
-								<span>{{ item.categorys[0] }}</span>
-							</p>
-						</div>
-					</a>
+						<!-- 内容主题 -->
+						<p class="play_tag">
+							<span>{{ item.categorys[0] }}</span>
+						</p>
+					</div>
 				</section>
 			</div>
 			<!-- 查看更多 -->
@@ -41,6 +41,7 @@
 			</div>
 			
 		</div>
+		<play-footer></play-footer>
 	</div>	
 </template>
 
@@ -174,34 +175,51 @@
 
 
 <script type="text/javascript">
+// 引入轮播图组件
+import playSwiper from './../../components/swiper/swiper'
+// 引入footer组件
+import playFooter from './../../components/footer/footer'
+
 export default{
 	name: 'play',
+	props: ['playswiper'],
+	components: {
+		playSwiper,playFooter
+	},
+	methods:{
+		goDetail(data){
+			// 实现路由跳转，并传递参数
+			console.log(data)
+			this.$router.push({
+				path: '/playdetail',
+				query:{
+					id: data
+				} 
+			})
+		}
+	},
 	data(){
 		return {
 			data: [],
-			playData: []
+			playData: [],
+			playSwiperData:[]
 		}
+
 	},
 	created(){
 		this.axios.get('static/data/data/play/playShopList.json').then(res => {
 			this.data = res.data.data.doc[1].itemData[0].content;
 			// console.log(res.data);
 			this.playData = res.data.data.doc[3].itemData;
+			this.data = res.data.data.doc[1].itemData[0].content
+			this.playData = res.data.data.doc[3].itemData
+			this.playSwiperData = res.data.data.extraData.rocket.reserveList.content
 		},err =>{
 			console.log(err);
 		},'json')	
 
 	}
 }
-
-
-
-
-
-
-
-
-
 
 </script>
 

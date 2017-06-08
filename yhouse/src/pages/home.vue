@@ -56,7 +56,8 @@
   border-radius: .23rem;
 }
 .headerCity{
-  width: 15%;
+  width: 18%;
+  white-space: nowrap;
   font-size: .13rem;
 }
 .headerCity span{

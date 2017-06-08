@@ -42,7 +42,7 @@ export default{
      		this.bus.currentIndex.city =  event.target.innerHTML;
      		this.bus.cityId = key;
      		// console.log(this.bus.cityId);
-     		// history.back();
+     		history.back();
      	}
     }
 }
