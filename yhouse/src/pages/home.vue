@@ -1,8 +1,33 @@
 <template>
-	 <div class="home">
+   <!--  <div id="app">
+      	<div class="header">
+            <div class="header_nav">
+                <router-link to='/city'>city</router-link>
+                <router-link to='/search'>search</router-link>
+                <router-link to='/choose'>choose</router-link>
+            </div>
+            <ul class="tabbar">
+                <li>
+                    <router-link to='/food'>美食</router-link>
+                </li>
+                 <li>
+                    <router-link to='/life'>玩乐</router-link>
+                </li>
+                 <li>
+                    <router-link to='/play'>夜生活</router-link>
+                </li>
+                 <li>
+                    <router-link to='/spa'>美容/spa</router-link>
+                </li>
+                    
+            </ul>
+        </div>
+        <router-view></router-view>
+    </div> -->
+     <div class="home">
       <div class="header">
         <div class="headerTop">
-          <router-link to='/city' class="headerCity" tag="div">{{thiscity}} <span></span></router-link>
+          <router-link to='/city' class="headerCity" tag="div">北京 <span></span></router-link>
           <router-link to='/search' class="search" tag="div">
             <input id="searchInput" type="text" placeholder="请输入商家、商圈、菜系、活动">
           </router-link>
@@ -12,7 +37,8 @@
           <router-link to='/food' tag="div"><span>美食</span></router-link>
           <router-link to='/play' tag="div"><span>玩乐</span></router-link>
           <router-link to='/life' tag="div"><span>夜生活</span></router-link>
-          <router-link to='/spa' tag="div"><span>美容</span>/SPA</router-link>    
+          <router-link to='/spa' tag="div"><span>美容</span>/SPA</router-link>
+               
         </div>
       </div>
       <router-view></router-view>
@@ -20,15 +46,43 @@
 </template>
 
 <script>
-	 export default {
-	   name: 'home',
-     data(){
-          return {
-            thiscity:"北京"
-          }
-     }
-	 }
+	export default {
+	 	name: 'home'
+	}
 </script>
+<style>
+.header_nav{
+    height: .42rem;
+}
+.tabbar{
+    width: 100%;
+    height: .25rem;
+    line-height: .25rem;
+    background: #fff;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-around;
+}
+.tabbar>li>a{
+    font-size: .12rem;
+    color: #111;
+    font-family: NotoSansHans-Regular;
+}
+</style>
+	
+	
+
+<script>
+export default {
+    name: 'home',
+    data(){
+        return {
+            thiscity:"北京"
+        }
+    }
+}
+</script>
+
 <style>
 .header{
   background-color: white;

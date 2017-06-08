@@ -16,6 +16,10 @@ import Life from '../pages/life/life'
 import Play from '../pages/play/play'
 import Spa from '../pages/spa/spa'
 
+import PlayDetail from '../pages/play/PlayDetail'
+import Topic from '../components/themeDetail'
+import Host from '../components/shopDetail'
+
 
 // 定义路由
 const routes = [
@@ -29,6 +33,9 @@ const routes = [
 	{path: '/city',component: City},
 	{path: '/choose',component: Choose},
 	{path: '/search',component: Search},
+	{path: '/search:id',component: PlayDetail},
+	{path: '/topic:id',component: Topic},
+	{path: '/host:id',component: Host},
 ]
 
 // 导出创建好的router的对象
