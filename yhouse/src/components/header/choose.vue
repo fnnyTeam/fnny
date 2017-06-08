@@ -4,7 +4,7 @@
 			<div class="choose_header">
 				<a class="choose_back" v-on:click="back"></a>
 				<ul>
-					<li class="choose_tab" v-for="item in chooseHeaderData" v-text="item.name"></li>
+					<li class="choose_tab" v-for="item in chooseHeaderData" v-text="item.name" @click="headChange"></li>
 				</ul>
 				<a class="choose_search" href="/search"></a>		
 			</div>
@@ -221,27 +221,38 @@ export default{
 		return{
 			chooseHeaderData: [],
 			chooseContentData: [],
+			bizType: 1
 		}
 	},
 	mounted () {
 		
 		this.axios.get('api/api/m/filter/list-v3.9/1').then(res => {
 			this.chooseHeaderData = res.data.data.urlParamValues		
-			console.log(res)		
+			// console.log(res)		
 		},err =>{
-			console.log(err)
+			// console.log(err)
 		},'json')
 		this.axios.get('api/api/m/search-v4.2?bizType=2&catalog=31&cityId=1&filter=2&mc=&page=1&pageSize=10&sort=1').then(res => {
 			this.chooseContentData = res.data.data.searchData.doc		
-			console.log(res)		
+			// console.log(res)		
 		},err =>{
-			console.log(err)
+			// console.log(err)
 		},'json')
 		
 	},
 	methods: {
 		back(){
 			history.back();
+		},
+		headChange(){
+			if(event.currentTarget.innerHTML == '商户'){
+				this.bizType = 1;
+				// console.log(this.bizType)
+			}else if(event.currentTarget.innerHTML == '商品'){
+				this.bizType = 2;
+				// console.log(this.bizType)
+
+			}
 		}
 	}
 }
