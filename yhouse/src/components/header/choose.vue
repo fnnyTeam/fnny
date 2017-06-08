@@ -19,23 +19,13 @@
 		</div>		
 		<div class="choose_absolute">
 			<div class="choose_content">		
-				<a href="">
+				<a href="" v-for="item in chooseContentData">
 					<div class="choose_shop">
-						<img src="http://p.yhres.com/hostInfo/2017/05/29/1496054458677674.jpg-rq75h" alt="">
+						<img :src="item.productInfo.picUrl" alt="">
 						<div class="choose_shop_content">
-							<h3>柯来乐colala酒窖</h3>
-							<p>北京欢乐谷<span> · </span>西餐</p>
-							<p>人均939元</p>
-						</div>		
-					</div>
-				</a>
-				<a href="">
-					<div class="choose_shop">
-						<img src="http://p.yhres.com/hostInfo/2017/05/29/1496054458677674.jpg-rq75h" alt="">
-						<div class="choose_shop_content">
-							<h3>柯来乐colala酒窖</h3>
-							<p>北京欢乐谷<span> · </span>西餐</p>
-							<p>人均939元</p>
+							<h3 v-text="item.productInfo.hostName"></h3>
+							<p><span v-text="item.productInfo.businessesDistrict"></span><span> · </span><span v-text="item.productInfo.cuisineStyle"></span></p>
+							<p>人均<span v-text="item.productInfo.priceStr"></span></p>
 						</div>		
 					</div>
 				</a>
@@ -230,16 +220,20 @@ export default{
 	data(){
 		return{
 			chooseHeaderData: [],
-			// chooseFilterData: [],
+			chooseContentData: [],
 		}
 	},
 	mounted () {
-		this.axios.get('static/data/data/choose/merchantList.json').then(res => {
-			this.chooseHeaderData = res.data.data.urlParamValues
-			// this.chooseFilterData = res.data.data.urlParamValues
-			console.log(this.chooseHeaderData)
-			// console.log(this.chooseFilterData)
-			
+		
+		this.axios.get('api/api/m/filter/list-v3.9/1').then(res => {
+			this.chooseHeaderData = res.data.data.urlParamValues		
+			console.log(res)		
+		},err =>{
+			console.log(err)
+		},'json')
+		this.axios.get('api/api/m/search-v4.2?bizType=2&catalog=31&cityId=1&filter=2&mc=&page=1&pageSize=10&sort=1').then(res => {
+			this.chooseContentData = res.data.data.searchData.doc		
+			console.log(res)		
 		},err =>{
 			console.log(err)
 		},'json')
