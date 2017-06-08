@@ -13,7 +13,7 @@
 
 			<!-- 游玩列表 -->
 			<div class="play_list">
-				<section v-for='item in playData' @click='goDetail($route.params.id)'>
+				<section v-for='item in playData' @click='goDetail(item.id)'>
 					<!-- 图片 -->
 					<div class="play_pic">
 						<img :src="item.picUrl">
@@ -187,12 +187,13 @@ export default{
 		playSwiper,playFooter
 	},
 	methods:{
-		goDetail(){
+		goDetail(data){
 			// 实现路由跳转，并传递参数
+			console.log(data)
 			this.$router.push({
-				path: '/playDetail/a',
+				path: '/playdetail',
 				query:{
-					id: ''
+					id: data
 				} 
 			})
 		}
