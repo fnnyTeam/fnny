@@ -189,9 +189,10 @@ export default{
 			this.playData = res.data.data.doc[3].itemData;
 		},err =>{
 			console.log(err);
-		},'json')
+		},'json')	
 
-	}	
+	}
+
 	// created(){
 	// 	this.axios.get('api').then(res => {
 	// 	    console.log(res.data);

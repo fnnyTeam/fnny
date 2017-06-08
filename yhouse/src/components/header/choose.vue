@@ -2,11 +2,11 @@
 	<div class="choose">
 		<div class="choose_fixed">
 			<div class="choose_header">
-				<a href="" class="choose_back"></a>
+				<a class="choose_back" v-on:click="back"></a>
 				<ul>
-					<li v-for="item in chooseHeaderData" v-text="item.name"></li>
+					<li class="choose_tab" v-for="item in chooseHeaderData" v-text="item.name"></li>
 				</ul>
-				<a href="" class="choose_search"></a>		
+				<a class="choose_search" href="/search"></a>		
 			</div>
 			<div class="choose_filter">
 				<ul>
@@ -16,20 +16,39 @@
 				</ul>
 			</div>
 			
+		</div>		
+		<div class="choose_absolute">
+			<div class="choose_content">		
+				<a href="">
+					<div class="choose_shop">
+						<img src="http://p.yhres.com/hostInfo/2017/05/29/1496054458677674.jpg-rq75h" alt="">
+						<div class="choose_shop_content">
+							<h3>柯来乐colala酒窖</h3>
+							<p>北京欢乐谷<span> · </span>西餐</p>
+							<p>人均939元</p>
+						</div>		
+					</div>
+				</a>
+				<a href="">
+					<div class="choose_shop">
+						<img src="http://p.yhres.com/hostInfo/2017/05/29/1496054458677674.jpg-rq75h" alt="">
+						<div class="choose_shop_content">
+							<h3>柯来乐colala酒窖</h3>
+							<p>北京欢乐谷<span> · </span>西餐</p>
+							<p>人均939元</p>
+						</div>		
+					</div>
+				</a>
+				
+			</div>
+			<div class="choose_more">
+				查看更多
+			</div>
+			<div class="choose_bottom">
+				
+			</div>
 		</div>
-		
-		<div class="choose_content">
-			<a href="">
-				<div class="choose_shop">
-					<img src="http://p.yhres.com/hostInfo/2017/05/29/1496054458677674.jpg-rq75h" alt="">
-					<div class="choose_shop_content">
-						<h3>柯来乐colala酒窖</h3>
-						<p>北京欢乐谷<span> · </span>西餐</p>
-						<p>人均939元</p>
-					</div>		
-				</div>
-			</a>
-		</div>
+			
 	</div>	
 </template>
 <style type="text/css">
@@ -38,7 +57,7 @@
 		left: 0;
 		right: 0;
 		top: 0;
-		bottom: 0.09058rem;
+		bottom: 0;
 		background: #fff;
 		overflow-x: hidden;
 		overflow-y: auto;
@@ -51,6 +70,8 @@
 		left: 0;
 		right: 0;
 		height: 0.8rem;
+		background: #fff;
+		z-index: 10;
 	}
 	.choose_header{
 		display: flex;
@@ -69,6 +90,10 @@
 		padding: 0 0.3rem;
 		font-size: 0.16rem;
 		color: #555;
+	}
+	.choose_tab-active{
+		font-weight: 700;
+   	 	color: #111;
 	}
 	.choose_back{
 		display: block;
@@ -129,11 +154,19 @@
 	    height: .21rem;
 	    background-color: #ddd;
 	}
-	.choose_content{
+	.choose_absolute{
 		position: absolute;
 		top: 0.8rem;
 		left: 0;
 		right: 0;
+		bottom: 0;
+	}
+	.choose_content{
+		/*position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;*/
 		padding: 0 0.15rem;
 
 	}
@@ -172,6 +205,24 @@
 	    color: #555;
 	    font-size: .12rem;
 	}
+	.choose_more{ 
+		width: 100%;
+		height: 0.380435rem;
+	    line-height: 0.380435rem;
+	    text-align: center;
+	    color: #555;
+	    font-size: 0.126812rem;
+	    border-top: 1px solid #eee
+	}
+	.choose_bottom{
+		width: 100%;
+		height: 0.362319rem;
+		background-repeat: no-repeat;
+	    background-image: url(http://r.yhres.com/bottomline@2x.png?v4.3);
+	    background-position: center center;
+	    background-size: 2rem .2rem;
+	    background-color: #f4f4f4;
+	}
 </style>
 <script type="text/javascript">
 export default{
@@ -182,7 +233,7 @@ export default{
 			// chooseFilterData: [],
 		}
 	},
-	created () {
+	mounted () {
 		this.axios.get('static/data/data/choose/merchantList.json').then(res => {
 			this.chooseHeaderData = res.data.data.urlParamValues
 			// this.chooseFilterData = res.data.data.urlParamValues
@@ -193,6 +244,11 @@ export default{
 			console.log(err)
 		},'json')
 		
+	},
+	methods: {
+		back(){
+			history.back();
+		}
 	}
 }
 
