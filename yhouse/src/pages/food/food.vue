@@ -12,6 +12,7 @@
 		<shop-list :shopData="shopData"></shop-list>
 		<div class="load_more unload">查看更多</div>
 		<my-footer></my-footer>
+
 	</div>	
 </template>
 
@@ -32,6 +33,7 @@ export default{
 			shopData: []
 
 		}
+
 	},
 	created () {
 		
@@ -51,6 +53,7 @@ export default{
 
 	components: {
 		jxTheme, shopList, Swiper, myFooter
+
 	}
 
 }
