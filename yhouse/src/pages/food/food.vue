@@ -8,9 +8,11 @@
 		</div>
 		<jx-theme :jxThemeData = "jxThemeData"></jx-theme>
 		<shop-list :shopData="shopData"></shop-list>
-		<div class="load_more unload">查看更多</div>
+		<div class="play_last">
+			<p class="load_more unload">查看更多</p>
+			<!-- <p class="load_more loading">加载中</p> -->
+		</div>
 		<my-footer></my-footer>
-
 	</div>	
 </template>
 
@@ -33,10 +35,9 @@ export default{
 	},
 	created () {
 		// console.log(this.cityId);
-		this.axios.get('api/api/m/catalogData/list-v4.0?catalogId=2&cityId=1&page=1&pageSize=10&siteId=-1').then(res => {
+		this.axios.get('api/api/m/catalogData/list-v4.0?catalogId=2&cityId='+this.cityId+'&page=1&pageSize=10&siteId=-1').then(res => {
 			this.jxThemeData = res.data.data.doc[2].itemData
 			this.shopData = res.data.data.doc[3].itemData
-
 			this.swiperData = res.data.data.extraData.rocket.reserveList[0].content
 			// console.log(this.swiperData)
 			this.bannerData = res.data.data.doc[1].itemData[0].content
@@ -44,7 +45,6 @@ export default{
 			console.log(err)
 		},'json');
 
-			
 
 	},
 	components: {
