@@ -3,7 +3,7 @@
 		<header>
 			<a href="" class="playDetail_back" @click='goBack'></a>
 			<h1>活动详情</h1>
-			<a href="" class="playDetail_home"></a>
+			<a href="" class="playDetail_home" @click='backHome'></a>
 		</header>
 		<div class="playDetail_scroll">
 			<div class="playDetail_content">
@@ -40,18 +40,18 @@
 						<h3>
 							<span class="playDetail_xq">活动详情</span>
 						</h3>
-							<p class="playDetail_dec">{{ playDetailData.description }}</p>
+							<p class="playDetail_dec" v-html='playContent'></p>
 							<a href="" class="playDetail_more">完整活动详情</a>
 					</section>
 					<section>
 						<h3>
 							<span class="playDetail_ts">温馨提示</span>
 						</h3>
-						<p>使用日期：{{ playDetailData.productAdvice.startDate }} - {{ playDetailData.productAdvice.endDate }}</p>
-						<p v-if='playDetailData.productAdvice.applyExpiredTime'>截止日期：{{ playDetailData.productAdvice.applyExpiredTime }}</p>
-						<p class="playDetail_tsInfo" v-if='playDetailData.productAdvice.refundDesc'>
-							<span >{{ playDetailData.productAdvice.refundDesc }}</span>
-							<span>{{  playDetailData.productAdvice.subscribeDesc}}</span>
+						<p>使用日期：{{ playDetailContent.startDate }} - {{ playDetailContent.endDate }}</p>
+						<p>截止日期：{{ playDetailContent.applyExpiredTime }}</p>
+						<p class="playDetail_tsInfo" >
+							<span >{{ playDetailContent.refundDesc }}</span>
+							<span>{{  playDetailContent.subscribeDesc}}</span>
 						</p>
 						<p class="playDetail_kf">
 							<span class="playDetail_chat">在线客服</span>
@@ -65,11 +65,36 @@
 		<div class="playDetail_bottom">
 			<span class="sure">立即购买</span>
 		</div>
+		<!-- 地图 -->
+		<div id="map_content">
+			<!-- <div class="map_title">
+				<span></span>
+			</div> -->
+		</div>
 	</div>
-	
 </template>
 
 <style type="text/css">
+	/*地图*/
+	#map_content{
+		width: 100%;
+		height: 100%;
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		z-index: 100;
+		display: none;
+	}
+	.map_title{
+		width: 100%;
+		height: 15px;
+		background: #eee;
+	}
+	.map_title>span{
+		background: url(../../../static/imgs/play/icon_link.png);
+	}
 	#playDetail{
 		background-color: #fff;
 	}
@@ -362,6 +387,7 @@
 	}
 </style>
 
+
 <script type="text/javascript">
 
 // import playDetailSwiper from './../../components/swiper/swiper'
@@ -373,12 +399,20 @@ import playDetailFooter from './../../components/footer/footer'
 		methods:{
 			goBack(){
 				history.back()
+			},
+			backHome(){
+				this.$router.push({
+					path:'/play'
+				})
 			}
+			
 		},
 		data(){
 			return{
 				id: this.$route.query.id,
 				playDetailData: [],
+				playContent:'',
+				playDetailContent:[]
 				// swiperData:[]
 			}
 		},
@@ -386,8 +420,39 @@ import playDetailFooter from './../../components/footer/footer'
 			this.axios.get('api/api/m/event/item-v2.3/' + this.id +'?from=h5').then(res =>{
 				this.playDetailData = res.data.data;
 				this.swiperData = res.data.data.mPicUrl
-				console.log(res.data.data);
-			})
+				this.playContent = this.playDetailData.description
+				this.playDetailContent = res.data.data.productAdvice
+				// console.log(this.playDetailData.productAdvice);
+
+			}) 
+			
+		},
+		mounted(){
+			// 创建地图实例
+			var map = new AMap.Map('map_content',{
+				zoom: 15,
+				center:[121.498586,31.239637],
+				resizeEnable: true
+			});
+			// 语言设置
+			map.setLang('zh_cn');
+			// 点击按钮获取地图
+			AMap.event.addDomListener(document.querySelector('.playDetail_icon2'),"click",()=>{
+					console.log(this.playDetailData)	
+					$("#map_content").show();
+					// 同时设置缩放比例及中心点
+					map.setZoomAndCenter(16,[this.playDetailData.longitude,this.playDetailData.latitude]);
+					var marker = new AMap.Marker({ //添加自定义点标记
+				        map: map,
+				        position: [this.playDetailData.longitude,this.playDetailData.latitude], //基点位置
+				        offset: new AMap.Pixel(0, 0), //相对于基点的偏移位置
+				        draggable: true,  //是否可拖动
+				        // icon: new AMap.Icon({
+				        // 	size: new AMap.Size(30,40),
+				        // 	// images: "../images/map1.png"
+				        // })  
+					});
+				})
 		},
 		components:{
 			// playDetailSwiper,
@@ -395,5 +460,9 @@ import playDetailFooter from './../../components/footer/footer'
 
 		}
 	}
+
+	
+
+	
 
 </script>
