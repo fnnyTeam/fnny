@@ -16,29 +16,7 @@
 
 	</div>	
 </template>
-<style type="text/css">
-	.food_banner{
-		display: flex;
-		justify-content: space-around;
-		flex-wrap: wrap;
-		width: 100%;
-		height: 1.5rem;
-		margin-bottom: 0.099638rem;
-	}
-	.food_bannerPic{
-		width: 48.5%;
-		height: 46%;
-	}
-	.food_bannerPic a{
-		display: block;
-		width: 100%;
-		height: 100%;
-	}
-	.food_bannerPic img{
-		width: 100%;
-		height: 100%;
-	}
-</style>
+
 <script type="text/javascript">
 import jxTheme from '../../components/jxTheme/jxTheme'
 import shopList from '../../components/shopList/shopList'
@@ -95,6 +73,27 @@ export default{
 </script>
 
 <style type="text/css">
+	.food_banner{
+		display: flex;
+		justify-content: space-around;
+		flex-wrap: wrap;
+		width: 100%;
+		height: 1.5rem;
+		margin-bottom: 0.099638rem;
+	}
+	.food_bannerPic{
+		width: 48.5%;
+		height: 46%;
+	}
+	.food_bannerPic a{
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+	.food_bannerPic img{
+		width: 100%;
+		height: 100%;
+	}
 	.load_more{
 		height: 42px;
 		line-height: 42px;
@@ -115,4 +114,8 @@ export default{
 		display: inline-block;
 		margin-left: 5px;
 	}
+
+
 </style>
+
+

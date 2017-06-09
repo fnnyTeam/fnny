@@ -10,10 +10,11 @@
           <router-link to='/choose' class="headerChoose" tag="div">筛选<span></span></router-link>
         </div> 
         <div class="tabbar">
-          <router-link to='/food' tag="div"><span>美食</span></router-link>
-          <router-link to='/play' tag="div"><span>玩乐</span></router-link>
-          <router-link to='/life' tag="div"><span>夜生活</span></router-link>
-          <router-link to='/spa' tag="div"><span>美容</span>/SPA</router-link>
+          <router-link to='/food' tag="div" ><span @click="styleFn(1)">美食</span></router-link>
+          <router-link to='/play' tag="div" ><span @click="styleFn(2)">玩乐</span></router-link>
+          <router-link to='/life' tag="div" ><span @click="styleFn(3)">夜生活</span></router-link>
+          <router-link to='/spa'  tag="div" ><span @click="styleFn(4)">美容/SPA</span></router-link>
+          <div class="navDivstyle" :style="changeNavStyle"></div>
         </div>
       </div>
       <router-view ></router-view>
@@ -25,12 +26,51 @@
      name: 'home',
      data(){
         return {
-          currentcity: this.bus.currentIndex.city
+          currentcity: this.bus.currentIndex.city,
+          changeNavStyle:{},
+          routerId:this.bus.routerId
+        }
+     },
+     created(){     
+        this.navStyleFn();
+     },
+     methods:{
+        navStyleFn(){
+          switch(this.bus.routerId){
+            case 1 :          
+              this.changeNavStyle = {'left': '0.32rem'};
+              break;
+            case 2 :          
+              this.changeNavStyle = {'left': '1.17rem'};
+              break;
+            case 3 :         
+              this.changeNavStyle = {'left': '2.05rem'};
+              break;
+            case 4 :          
+              this.changeNavStyle = {'left': '2.9rem'};
+              break;
+          };   
+        },
+        styleFn(nav){
+            this.bus.routerId = nav;
+            this.navStyleFn();
+            // console.log(this.bus.routerId)
         }
      }
 	 }
 </script>
 <style>
+.tabbar .router-link-active{
+  color:red;
+}
+.tabbar .navDivstyle{
+  width: .18rem;
+  height: 0;
+  border-bottom: 2px solid red;
+  position: absolute;
+  left: .32rem;
+  top:.65rem;
+}
 .header{
   background-color: white;
   font-family: 微软雅黑,microsoft yahei;
@@ -89,5 +129,8 @@
   width:100%;
   text-align: center;
   line-height: .27rem;
+}
+.tabbar span{
+  display: block;
 }
 </style>

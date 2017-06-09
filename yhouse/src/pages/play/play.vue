@@ -207,13 +207,12 @@ export default{
 
 	},
 	created(){
-		this.axios.get('static/data/data/play/playShopList.json').then(res => {
-			this.data = res.data.data.doc[1].itemData[0].content;
-			// console.log(res.data);
-			this.playData = res.data.data.doc[3].itemData;
+		this.axios.get('api/api/m/catalogData/list-v4.0?catalogId=1&cityId=1&page=1&pageSize=10&siteId=-1').then(res => {
 			this.data = res.data.data.doc[1].itemData[0].content
+			// console.log(res.data)
 			this.playData = res.data.data.doc[3].itemData
-			this.playSwiperData = res.data.data.extraData.rocket.reserveList.content
+			this.playSwiperData = res.data.data.extraData.rocket.reserveList[0].content
+			// console.log(this.playSwiperData)
 		},err =>{
 			console.log(err);
 		},'json')	
