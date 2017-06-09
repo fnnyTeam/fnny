@@ -208,34 +208,18 @@ export default{
 	},
 	created(){
 		this.axios.get('static/data/data/play/playShopList.json').then(res => {
+			this.data = res.data.data.doc[1].itemData[0].content;
+			// console.log(res.data);
+			this.playData = res.data.data.doc[3].itemData;
 			this.data = res.data.data.doc[1].itemData[0].content
-			console.log(res.data)
 			this.playData = res.data.data.doc[3].itemData
 			this.playSwiperData = res.data.data.extraData.rocket.reserveList.content
-			console.log(this.playSwiperData)
 		},err =>{
 			console.log(err);
 		},'json')	
 
 	}
-
-	
-
-	// created(){
-	// 	this.axios.get('api').then(res => {
-	// 	    console.log(res.data);
-	// 	})
-	// }
 }
-
-
-
-
-
-
-
-
-
 
 </script>
 

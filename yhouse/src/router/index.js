@@ -20,6 +20,9 @@ import PlayDetail from '../pages/play/PlayDetail'
 import Topic from '../components/themeDetail'
 import Host from '../components/shopDetail'
 
+import Shop from '../components/header/shop'
+import Product from '../components/header/product'
+
 
 // 定义路由
 const routes = [
@@ -31,7 +34,11 @@ const routes = [
 		{path: 'spa',component: Spa},
 	]},		
 	{path: '/city',component: City},
-	{path: '/choose',component: Choose},
+	{path: '/choose',component: Choose, children: [
+		{path: '', component: Shop},
+		{path: 'bizType2', component: Shop},
+		{path: 'bizType1', component: Product},
+	]},
 	{path: '/search',component: Search},
 	{path: '/playdetail',component: PlayDetail},
 	{path: '/topic',component: Topic},
