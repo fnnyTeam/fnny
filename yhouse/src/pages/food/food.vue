@@ -1,9 +1,6 @@
 <template>
 	<div class="food">
 		<swiper :swiperdata = "swiperData"></swiper>
-		<jx-theme :jxThemeData = "jxThemeData"></jx-theme>
-		<shop-list :shopData="shopData"></shop-list>
-		<my-footer></my-footer>
 		<div class="food_banner">
 			<div class="food_bannerPic" v-for="item in bannerData">
 				<a href=""><img :src="item.picUrl" alt=""></a>
@@ -41,26 +38,13 @@ export default{
 			this.shopData = res.data.data.doc[3].itemData
 
 			this.swiperData = res.data.data.extraData.rocket.reserveList[0].content
+			// console.log(this.swiperData)
 			this.bannerData = res.data.data.doc[1].itemData[0].content
 		},err =>{
 			console.log(err)
 		},'json');
 
-		this.axios.get('./static/data/food/shopList.json')
-		.then(res=>{
-			//console.log(res.data.data.doc[2].itemData);
-			this.jxThemeData = res.data.data.doc[2].itemData
-		},err =>{
-			console.log(err);
-		},'json');
-
-		this.axios.get('./static/data/food/shopList.json')
-		.then(res => {
-			//console.log(res.data.data.doc[3].itemData[5].commentTags);
-			this.shopData = res.data.data.doc[3].itemData;
-		},err =>{
-			console.log(err);
-		},'json')		
+			
 
 	},
 	components: {

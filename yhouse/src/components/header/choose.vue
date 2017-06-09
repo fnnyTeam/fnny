@@ -43,6 +43,10 @@
 	</div>	
 </template>
 <style type="text/css">
+	ul{
+		padding: 0;
+	}
+	
 	.choose{
 		position: absolute;
 		left: 0;
@@ -82,7 +86,7 @@
 		font-size: 0.16rem;
 		color: #555;
 	}
-	.router-link-active{
+	.choose_header .router-link-active{
 		font-weight: 700;
    	 	color: #111;
    	 	border-bottom: 0.02rem solid #000;
@@ -273,7 +277,7 @@ export default{
 		
 		this.axios.get('api/api/m/filter/list-v3.9/'+this.cityId).then(res => {
 			this.chooseHeaderData = res.data.data.urlParamValues		
-			console.log(res)		
+			// console.log(res)		
 		},err =>{
 			console.log(err)
 		},'json')
