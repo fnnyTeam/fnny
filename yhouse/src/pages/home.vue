@@ -38,14 +38,15 @@
         }
      },
      created(){     
-        this.navStyleFn();    
+        this.navStyleFn();
+        var timeFn1=1,timeFn2;
      },
      watch:{
           scrollFlag:function(e){
               if(e){
-                setTimeout(this.hmHeaderUp,1000/60);
+                this.hmHeaderUp();
               }else{                
-                setTimeout(this.hmHeaderDown,1000/60);
+                this.hmHeaderDown();
               }
           }
      },
@@ -66,17 +67,21 @@
             this.scrollTop = $('.home').scrollTop();        
         },
         hmHeaderUp(){
-            this.scrollNum--;
             $('.header').css("top",this.scrollNum + "px");
             if(this.scrollNum > -50){
-                setTimeout(this.hmHeaderUp,1000/60);
+                this.scrollNum--;
+                clearTimeout(this.timeFn);
+                this.timeFn = setTimeout(this.hmHeaderUp,1000/60);
             }
         },
         hmHeaderDown(){
-            this.scrollNum++;
             $('.header').css("top",this.scrollNum + "px");
-            if(this.scrollNum < -1){
-                setTimeout(this.hmHeaderDown,1000/60);
+            if(this.scrollNum < 0){
+                this.scrollNum++;
+                clearTimeout(this.timeFn);
+                this.timeFn = setTimeout(this.hmHeaderDown,1000/60);                
+            }else{
+              this.scrollNum = 0;
             }
         },
         navStyleFn(){
