@@ -8,8 +8,7 @@
 		<div class="themeDetail_pic">
 			<img :src="detailImgData" class="themeDetail_pic_icon">
 			<div class="themeDetail_pic_content">
-				<div v-html="detailData" class="themeDetail_pic_p">
-					
+				<div v-html="detailData" class="themeDetail_pic_p">					
 				</div>
 			</div>
 		</div>
