@@ -30,7 +30,7 @@
 
 			this.axios.get('/api/api/m/search-v4.2?bizType=2&catalog=31&cityId='+ this.cityId +'&filter=2&mc=&page=1&pageSize=10&sort=1').then(res => {
 				this.chooseContentData = res.data.data.searchData.doc		
-				console.log(this.chooseContentData)		
+				// console.log(this.chooseContentData)		
 			},err =>{
 				console.log(err)
 			},'json')
