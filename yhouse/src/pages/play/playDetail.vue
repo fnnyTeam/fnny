@@ -38,7 +38,7 @@
 					</section>
 					<section>
 						<h3>
-							<span class="playDetail_tj">活动详情</span>
+							<span class="playDetail_xq">活动详情</span>
 						</h3>
 							<p class="playDetail_dec">{{ playDetailData.description }}</p>
 							<a href="" class="playDetail_more">完整活动详情</a>
@@ -48,23 +48,23 @@
 							<span class="playDetail_ts">温馨提示</span>
 						</h3>
 						<p>使用日期：{{ playDetailData.productAdvice.startDate }} - {{ playDetailData.productAdvice.endDate }}</p>
-						<p>截止日期：{{ playDetailData.productAdvice.applyExpiredTime }}</p>
-						<div class="playDetail_tsInfo">
+						<p >截止日期：{{ playDetailData.productAdvice.applyExpiredTime }}</p>
+						<p class="playDetail_tsInfo" v-if='playDetailData.productAdvice.refundDesc'>
 							<span >{{ playDetailData.productAdvice.refundDesc }}</span>
 							<span>{{  playDetailData.productAdvice.subscribeDesc}}</span>
-						</div>
-						<div class="playDetail_kf">
-							<span>在线客服</span>
-							<span>电话客服</span>
-						</div>
+						</p>
+						<p class="playDetail_kf">
+							<span class="playDetail_chat">在线客服</span>
+							<span class="playDetail_service">电话客服</span>
+						</p>
 					</section>
 				</article>
 			</div>
+			<play-detail-footer></play-detail-footer>
 		</div>
-		
-		<footer>
+		<div class="playDetail_bottom">
 			<span class="sure">立即购买</span>
-		</footer>
+		</div>
 	</div>
 	
 </template>
@@ -250,11 +250,24 @@
 	    line-height: .42rem;
 	    font-weight: 700;
 	}
-	
+	#playDetail section>h3>span{
+		padding-left: .28rem;
+		background-size: .2rem auto;
+	}
 	.playDetail_highs{
 		font-size: .14rem;
     	line-height: .25rem;
     	padding-bottom: .16rem;
+	}
+	.playDetail_tj{
+		background: url(../../../static/imgs/play/tip-1.png) left center no-repeat;
+	}
+	.playDetail_xq{
+		background: url(../../../static/imgs/play/tip-2.png) left center no-repeat;
+	}
+	.playDetail_ts{
+		background: url(../../../static/imgs/play/tip-3.png) left center no-repeat;
+		
 	}
 
 
@@ -290,7 +303,11 @@
 	    line-height: .4rem;
 	    height: .4rem;
         color: #d9a961;
+        background-size: .05rem auto;
+	    background: url(../../../static/imgs/play/icon_link.png) right center no-repeat;
+	    padding-right: .15rem;
 	}
+	
 	/****温馨提示****/
 	.playDetail_tsInfo>span{
 		background: url(../../../static/imgs/play/icon2.png) no-repeat;
@@ -304,7 +321,26 @@
 		padding-bottom: .2rem;
 	}
 
-	footer{
+	article>section:last-child p{
+		line-height: .25rem;
+	}
+	.playDetail_kf>span{
+		color: #d9a961;
+	    padding: .04rem .1rem .04rem .2rem;
+	    margin: 0 .1rem;
+	    background-position: left center,right center;
+	    background-repeat: no-repeat,no-repeat;
+	}
+	.playDetail_chat{
+		background-image: url(../../../static/imgs/play/icon_chat.png),url(../../../static/imgs/play/icon_link.png);
+    	background-size: .14rem auto,.05rem auto
+	}
+	.playDetail_service{
+		background-image: url(../../../static/imgs/play/icon_service.png),url(../../../static/imgs/play/icon_link.png);
+    	background-size: .14rem auto,.05rem auto
+	}
+	/****立即购买****/
+	.playDetail_bottom{
 		background-color: #fff;
 		position: absolute;
 		bottom: 0;
@@ -318,7 +354,7 @@
 		font-size: .17rem;
 		background: linear-gradient(-125deg,#ebb761 0,#edc776 100%);
 	}
-	footer>.sure{
+	.playDetail_bottom>.sure{
 		padding-right: .13rem;
 	    background: url(../../../static/imgs/play/sure.png) right center no-repeat;
 	    background-size: .08rem auto;
@@ -329,6 +365,9 @@
 <script type="text/javascript">
 
 // import playDetailSwiper from './../../components/swiper/swiper'
+
+// 引入footer组件
+import playDetailFooter from './../../components/footer/footer'
 
 	export default{
 		methods:{
@@ -344,16 +383,15 @@
 			}
 		},
 		created(){
-			console.log(this.id)
 			this.axios.get('api/api/m/event/item-v2.3/' + this.id +'?from=h5').then(res =>{
 				this.playDetailData = res.data.data;
 				this.swiperData = res.data.data.mPicUrl
 				console.log(res.data.data);
-				console.log(res.data.data.title);
 			})
 		},
 		components:{
 			// playDetailSwiper,
+			playDetailFooter,
 
 		}
 	}
