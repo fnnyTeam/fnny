@@ -1,23 +1,25 @@
 <template>
-	 <div class="home">
-      <div class="header">
-        <div class="headerTop">
-          <router-link to='/city' class="headerCity" tag="div">
-          {{currentcity}} <span ></span></router-link>
-          <router-link to='/search' class="search" tag="div">
-            <input id="searchInput" type="text" placeholder="请输入商家、商圈、菜系、活动">
-          </router-link>
-          <router-link to='/choose' class="headerChoose" tag="div">筛选<span></span></router-link>
-        </div> 
-        <div class="tabbar">
-          <router-link to='/food' tag="div" ><span @click="styleFn(1)">美食</span></router-link>
-          <router-link to='/play' tag="div" ><span @click="styleFn(2)">玩乐</span></router-link>
-          <router-link to='/life' tag="div" ><span @click="styleFn(3)">夜生活</span></router-link>
-          <router-link to='/spa'  tag="div" ><span @click="styleFn(4)">美容/SPA</span></router-link>
-          <div class="navDivstyle" :style="changeNavStyle"></div>
+	 <div class="home" @scroll="hmScrollFn($event)">
+        <transition name="headerMove">
+        <div class="header">
+          <div class="headerTop">
+            <router-link to='/city' class="headerCity" tag="div">
+            {{currentcity}} <span ></span></router-link>
+            <router-link to='/search' class="search" tag="div">
+              <input id="searchInput" type="text" placeholder="请输入商家、商圈、菜系、活动">
+            </router-link>
+            <router-link to='/choose' class="headerChoose" tag="div">筛选<span></span></router-link>
+          </div> 
+          <div class="tabbar">
+            <router-link to='/food' tag="div" ><span @click="styleFn(1)">美食</span></router-link>
+            <router-link to='/play' tag="div" ><span @click="styleFn(2)">玩乐</span></router-link>
+            <router-link to='/life' tag="div" ><span @click="styleFn(3)">夜生活</span></router-link>
+            <router-link to='/spa'  tag="div" ><span @click="styleFn(4)">美容/SPA</span></router-link>
+            <div class="navDivstyle" :style="changeNavStyle"></div>
+          </div>
         </div>
-      </div>
-      <router-view ></router-view>
+        </transition>
+        <router-view class="homeMain"></router-view>
   </div>
 </template>
 
@@ -28,13 +30,55 @@
         return {
           currentcity: this.bus.currentIndex.city,
           changeNavStyle:{},
-          routerId:this.bus.routerId
+          routerId:this.bus.routerId,
+          scrollFlag:false,
+          scrollNum:0,
+          scrollTop:0,
+          timeFn:'',
         }
      },
      created(){     
-        this.navStyleFn();
+        this.navStyleFn();    
+     },
+     watch:{
+          scrollFlag:function(e){
+              if(e){
+                setTimeout(this.hmHeaderUp,1000/60);
+              }else{                
+                setTimeout(this.hmHeaderDown,1000/60);
+              }
+          }
      },
      methods:{
+        styleFn(nav){
+            this.bus.routerId = nav;
+            this.navStyleFn();
+            // console.log(this.bus.routerId)
+        },
+        hmScrollFn(ve){
+            if($('.home').scrollTop() > 90){
+                if($('.home').scrollTop() > this.scrollTop){
+                    this.scrollFlag = true;
+                }else{
+                    this.scrollFlag = false;                  
+                }
+            };
+            this.scrollTop = $('.home').scrollTop();        
+        },
+        hmHeaderUp(){
+            this.scrollNum--;
+            $('.header').css("top",this.scrollNum + "px");
+            if(this.scrollNum > -50){
+                setTimeout(this.hmHeaderUp,1000/60);
+            }
+        },
+        hmHeaderDown(){
+            this.scrollNum++;
+            $('.header').css("top",this.scrollNum + "px");
+            if(this.scrollNum < -1){
+                setTimeout(this.hmHeaderDown,1000/60);
+            }
+        },
         navStyleFn(){
           switch(this.bus.routerId){
             case 1 :          
@@ -49,17 +93,29 @@
             case 4 :          
               this.changeNavStyle = {'left': '2.9rem'};
               break;
-          };   
-        },
-        styleFn(nav){
-            this.bus.routerId = nav;
-            this.navStyleFn();
-            // console.log(this.bus.routerId)
+          };
         }
      }
 	 }
 </script>
 <style>
+.home{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+.homeMain{
+  margin-top: .75rem;
+}
+::-webkit-scrollbar
+{
+  display: none;
+} 
 .tabbar .router-link-active{
   color:red;
 }
@@ -72,8 +128,14 @@
   top:.65rem;
 }
 .header{
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
   background-color: white;
   font-family: 微软雅黑,microsoft yahei;
+  margin-bottom: .06rem;
+  z-index: 100;
 }
 .headerTop{
   width: 100%;
