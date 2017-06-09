@@ -21,11 +21,14 @@ export default{
 		return {
 			jxThemeData: [],
 			shopData: [],
-			swiperData: []
+			swiperData: [],
+			cityId: this.bus.cityId
+
 		}
 	},
 	mounted () {
-		this.axios.get('api/api/m/catalogData/list-v4.0?catalogId=12&cityId=1&page=1&pageSize=10&siteId=-1').then(res => {
+		
+		this.axios.get('api/api/m/catalogData/list-v4.0?catalogId=12&cityId='+ this.cityId +'&page=1&pageSize=10&siteId=-1').then(res => {
 			this.swiperData = res.data.data.extraData.rocket.reserveList[0].content
 			
 			this.jxThemeData = res.data.data.doc[2].itemData

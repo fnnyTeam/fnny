@@ -1,21 +1,21 @@
 <template>
 	<div id="themeDetail" >
 		<div class="themeDetail_header">
-			<span class="themeDetail_header_back" @click="goBack()"></span>
+			<a class="themeDetail_header_back" @click="goBack()"></a>
 			<h1 class="themeDetail_header_title">专题详情</h1>
-			<span class="themeDetail_header_homePage"></span>
+			<a class="themeDetail_header_homePage" @click="backHome()"></a>
 		</div>
 		<div class="themeDetail_pic">
-			<img src="http://p.yhres.com/topic/2017/04/24/156762_1493029199418.jpg-q75" class="themeDetail_pic_icon">
+			<img :src="detailImgData" class="themeDetail_pic_icon">
 			<div class="themeDetail_pic_content">
-				<p v-for="item in detailData" class="themeDetail_pic_p">
-					{{ item }}
-				</p>
+				<div v-html="detailData" class="themeDetail_pic_p">
+					
+				</div>
 			</div>
 		</div>
 		<ul class="themeDetail_shop">
 			<div class="themeDetail_shop_contaner">
-				<li class="themeDetail_shop_li" v-for="item in detailShopData">
+				<li class="themeDetail_shop_li" v-for="item in detailShopData" @click="getDetailData()">
 					<div class="themeDetail_lightBox"></div>
 					<div class="themeDetail_shop_icon">
 						<img :src="item.picUrl">
@@ -40,28 +40,34 @@
 		data () {
 			return {
 				id: this.$route.query,
-				detailData: [],
-				detailShopData: []
+				detailData: '',
+				detailShopData: [],
+				detailImgData: [],
+				detailId: [],
+				
 			}
 		},
 		methods: {
 			goBack () {
 				history.back();
+			},
+			getDetailData () {
+
+			},
+			backHome () {
+				this.$router.push({
+					path: '/food'
+				})
 			}
 		},
 		created () {
-			this.axios.get('api/api/m/topic/item-v2.6/5498?from=h5&page=1&pageSize=10')
+			this.detailId = this.id.id
+			this.axios.get('api/api/m/topic/item-v2.6/'+this.detailId+'?from=h5&page=1&pageSize=10')
 			.then(res => {
-				let ar = res.data.data.topicDescription
-				console.log(typeof this.detailData)
-				let arr = ar.split('<p style="text-align:center;">')
-				let str = arr.join('')
-				let arr1 = str.split('</p>')
-				console.log(res.data.data.contentList)
-				this.detailData = arr1
+				this.detailData = res.data.data.topicDescription
 				this.detailShopData = res.data.data.contentList
+				this.detailImgData = res.data.data.picUrl
 			});
-
 		},
 		components: {
 			themeFooter
@@ -129,10 +135,10 @@
 		overflow: hidden;
 		padding: 25px 0 30px;
 	}
-	.themeDetail_pic_p{
+	.themeDetail_pic_p p{
 		width: 100%;
 		text-align: center;
-		line-height: 28px;
+		line-height: 24px;
 		color: #666;
 		word-wrap: break-word;
 		word-break: break-all;

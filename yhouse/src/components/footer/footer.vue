@@ -23,7 +23,9 @@
 		name: 'footer',
 		methods: {
 			goHome () {
-				//this.$rooter = '/food'
+				this.$router.push({
+					path:'/food'
+				})
 			}
 		}
 	}
