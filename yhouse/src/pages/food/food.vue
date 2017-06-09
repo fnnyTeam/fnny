@@ -8,7 +8,7 @@
 		</div>
 		<jx-theme :jxThemeData = "jxThemeData"></jx-theme>
 		<shop-list :shopData="shopData"></shop-list>
-		<div class="play_last">
+		<div class="play_last" @click="">
 			<p class="load_more unload">查看更多</p>
 			<!-- <p class="load_more loading">加载中</p> -->
 		</div>
