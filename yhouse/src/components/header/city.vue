@@ -4,26 +4,24 @@
 			<div @click="back"></div>
 			<p>选择城市</p>
 		</div>
-		<div class="thisCity"><span>当前城市</span>：{{thiscity}}</div>
+		<div class="thisCity"><span>当前城市</span>：{{currentcity}}</div>
 		<div class="cityGroup" v-for="(cityId,group) in citygroup">
 			<p>{{group}}</p>
 			<ul class="groupBox">
-				<li v-for="key in cityId"  @click="changecity">{{ citys[key].name }}</li>
+				<li v-for="key in cityId"   @click="changecity(key)">{{ citys[key].name }}</li>
 			</ul>
 		</div>
 	</div>	
 </template>
 
 <script type="text/javascript">
-
 export default{
 	name: 'city',
-	
     data(){
         return {
+          currentcity:this.bus.currentIndex.city,
           citygroup:[],
-          citys:[],
-          thiscity:"北京"
+          citys:[]
         };
     },
     created(){
@@ -31,18 +29,21 @@ export default{
         
            	this.citygroup = res.data.cityGroup;
            	this.citys = res.data.city;
-        console.log(res.data.city);
+       		// console.log(res.data.city);
         },err =>{
             console.log(err)
-        },'json')
+        },'json');
     },
     methods:{
      	back(){
      		history.back()
      	},
-     	changecity(event){
-     		this.thiscity = event.target.innerHTML;
-     		// history.back() 
+     	changecity(key){	
+     		this.bus.currentIndex.city =  event.target.innerHTML;
+     		this.bus.cityId = key;
+     		// this.bus.cityDate = key;
+     		// console.log(this.bus.cityId);
+     		history.back();
      	}
     }
 }
@@ -89,11 +90,13 @@ export default{
 	color: #adadad;
 }
 .cityGroup ul{
+
 	display: flex;
 	flex-wrap: wrap;
 	text-align: center;
 	font-size: .13rem;
 	margin-bottom: .2rem;
+	padding: 0;
 }
 .cityGroup li{
 	width: 32%;

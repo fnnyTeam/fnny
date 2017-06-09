@@ -218,24 +218,7 @@ export default{
 		},'json')	
 
 	}
-
-	
-
-	// created(){
-	// 	this.axios.get('api').then(res => {
-	// 	    console.log(res.data);
-	// 	})
-	// }
 }
-
-
-
-
-
-
-
-
-
 
 </script>
 

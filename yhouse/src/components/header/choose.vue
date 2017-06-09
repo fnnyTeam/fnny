@@ -237,7 +237,7 @@ export default{
 		this.axios.get('static/data/data/choose/merchantList.json').then(res => {
 			this.chooseHeaderData = res.data.data.urlParamValues
 			// this.chooseFilterData = res.data.data.urlParamValues
-			console.log(this.chooseHeaderData)
+			// console.log(this.chooseHeaderData)
 			// console.log(this.chooseFilterData)
 			
 		},err =>{
