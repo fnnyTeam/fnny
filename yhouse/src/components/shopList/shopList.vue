@@ -2,7 +2,7 @@
 	<div class="shopList">
 		<ul>
 		
-			<li v-for="item in shopData" class="shopList_li">
+			<li v-for="item in shopData" class="shopList_li" @click="goshopDetail(item.id)">
 				<div class="shopList_title">
 					<img :src="item.logoUrl" class="shopList_title_icon">
 					<h2 class="shopList_title_content">{{ item.title }}</h2>
@@ -26,6 +26,18 @@
 	export default{
 		name: 'shopList',
 		props: ['shopData', 'tagData'],
+		methods: {
+			goshopDetail (data) {
+				
+				this.$router.push({
+					path: '/host',
+					query: {
+						id: data
+					}
+				})
+			}
+		},
+
 		
 	}
 </script>
