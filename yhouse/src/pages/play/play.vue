@@ -202,12 +202,13 @@ export default{
 		return {
 			data: [],
 			playData: [],
-			playSwiperData:[]
+			playSwiperData:[],
+			cityId:this.bus.cityId
 		}
 
 	},
 	created(){
-		this.axios.get('api/api/m/catalogData/list-v4.0?catalogId=1&cityId=1&page=1&pageSize=10&siteId=-1').then(res => {
+		this.axios.get('api/api/m/catalogData/list-v4.0?catalogId=1&cityId='+ this.cityId +'&page=1&pageSize=10&siteId=-1').then(res => {
 			this.data = res.data.data.doc[1].itemData[0].content
 			// console.log(res.data)
 			this.playData = res.data.data.doc[3].itemData

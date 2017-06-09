@@ -48,7 +48,7 @@
 							<span class="playDetail_ts">温馨提示</span>
 						</h3>
 						<p>使用日期：{{ playDetailData.productAdvice.startDate }} - {{ playDetailData.productAdvice.endDate }}</p>
-						<p >截止日期：{{ playDetailData.productAdvice.applyExpiredTime }}</p>
+						<p v-if='playDetailData.productAdvice.applyExpiredTime'>截止日期：{{ playDetailData.productAdvice.applyExpiredTime }}</p>
 						<p class="playDetail_tsInfo" v-if='playDetailData.productAdvice.refundDesc'>
 							<span >{{ playDetailData.productAdvice.refundDesc }}</span>
 							<span>{{  playDetailData.productAdvice.subscribeDesc}}</span>
