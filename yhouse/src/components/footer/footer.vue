@@ -2,7 +2,7 @@
 	<div id="footer">
 		<div class="footerContaner">
 			<p class="footerContaner_content">
-				<a href="">首页</a>
+				<a href="" @click="goHome()">首页</a>
 				<span>|</span>
 				<a href="">订单</a>
 				<span>|</span>
@@ -20,7 +20,14 @@
 
 <script type="text/javascript">
 	export default{
-		name: 'footer'
+		name: 'footer',
+		methods: {
+			goHome () {
+				this.$router.push({
+					path:'/food'
+				})
+			}
+		}
 	}
 </script>
 

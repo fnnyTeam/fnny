@@ -3,7 +3,7 @@
 		<div class="jxTheme_list">
 			<h2>精选推荐专题</h2>
 			<p>小编为你整理的品质好店</p>
-			<div class="jxTheme_pic" v-for="item in jxThemeData">
+			<div class="jxTheme_pic" v-for="item in jxThemeData" @click='gothemeDetail(item.id)'>
 				<div class="jxTheme_pic_lightBox"></div>
 				<div class="jxTheme_pic_icon">
 					<img :src="item.picUrl">
@@ -22,6 +22,17 @@
 export default{
 	name: 'jxTheme',
 	props: ['jxThemeData'],
+	methods: {
+		gothemeDetail (data) {
+			//console.log(data)
+			this.$router.push({
+				path: '/Topic',
+				query: {
+					id: data
+				}
+			})
+		}
+	}
 }
 </script>
 

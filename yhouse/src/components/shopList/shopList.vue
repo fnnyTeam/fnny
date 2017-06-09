@@ -1,6 +1,7 @@
 <template>
 	<div class="shopList">
 		<ul>
+		
 			<li v-for="item in shopData" class="shopList_li">
 				<div class="shopList_title">
 					<img :src="item.logoUrl" class="shopList_title_icon">

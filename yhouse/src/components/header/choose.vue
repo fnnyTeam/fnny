@@ -4,7 +4,8 @@
 			<div class="choose_header">
 				<a class="choose_back" v-on:click="back"></a>
 				<ul>
-					<li class="choose_tab" v-for="item in chooseHeaderData" v-text="item.name"></li>
+					<router-link  tag="li" class="choose_tab" v-for="item in chooseHeaderData" v-text="item.name" @click="headChange" :to="'/choose/bizType'+item.value"></router-link>
+					
 				</ul>
 				<a class="choose_search" href="/search"></a>		
 			</div>
@@ -13,34 +14,24 @@
 					<li>全部</li>
 					<li>分类筛选</li>
 					<li>智能排序<span></span></li>
+					<div class="ulDiv">
+						<div class="ulleft">
+							<ul>
+								<li></li>
+							</ul>
+						</div>
+						<div class="ulRight">
+							<ul>
+								<li></li>
+							</ul>
+						</div>
+					</div>
 				</ul>
 			</div>
 			
 		</div>		
 		<div class="choose_absolute">
-			<div class="choose_content">		
-				<a href="">
-					<div class="choose_shop">
-						<img src="http://p.yhres.com/hostInfo/2017/05/29/1496054458677674.jpg-rq75h" alt="">
-						<div class="choose_shop_content">
-							<h3>柯来乐colala酒窖</h3>
-							<p>北京欢乐谷<span> · </span>西餐</p>
-							<p>人均939元</p>
-						</div>		
-					</div>
-				</a>
-				<a href="">
-					<div class="choose_shop">
-						<img src="http://p.yhres.com/hostInfo/2017/05/29/1496054458677674.jpg-rq75h" alt="">
-						<div class="choose_shop_content">
-							<h3>柯来乐colala酒窖</h3>
-							<p>北京欢乐谷<span> · </span>西餐</p>
-							<p>人均939元</p>
-						</div>		
-					</div>
-				</a>
-				
-			</div>
+			<router-view :cityId="cityId"></router-view>	
 			<div class="choose_more">
 				查看更多
 			</div>
@@ -87,13 +78,14 @@
 	.choose_header ul li{
 		width: 0.339946rem;
 		line-height: 0.4rem;
-		padding: 0 0.3rem;
+		margin: 0 0.3rem;
 		font-size: 0.16rem;
 		color: #555;
 	}
-	.choose_tab-active{
+	.router-link-active{
 		font-weight: 700;
    	 	color: #111;
+   	 	border-bottom: 0.02rem solid #000;
 	}
 	.choose_back{
 		display: block;
@@ -128,7 +120,6 @@
 		display: flex;
 		width: 100%;
 		height: 100%;
-
 	}
 	.choose_filter ul li{
 		position: relative;
@@ -171,11 +162,29 @@
 
 	}
 	.choose_shop{
+		position: relative;
 		display: flex;
 		width: 100%;
 		height: 1.2rem;
 		padding: 0.15rem 0;
 		border-bottom: 1px solid #ddd;
+	}
+	.choose_reserve{
+		position: absolute;
+		top: .2rem;
+    	left: .05rem;
+		display: block;
+	    color: #555;
+	    font-size: .1rem;
+	    height: .17rem;
+	    line-height: .17rem;
+	    background-color: rgba(255,255,255,.95);
+	    padding: 0 .07rem;
+	    -webkit-border-radius: .17rem;
+	    -moz-border-radius: .17rem;
+	    -ms-border-radius: .17rem;
+	    -o-border-radius: .17rem;
+	    border-radius: .17rem;
 	}
 	.choose_shop img{
 		display: block;
@@ -205,6 +214,30 @@
 	    color: #555;
 	    font-size: .12rem;
 	}
+	.choose_shop .product_special{
+		color: #d9a961;
+	}
+	.choose_tag{
+		position: absolute;
+		bottom: 0.15rem;
+		width: 1.502627rem;
+		overflow: hidden;
+	}
+	.choose_tag span{
+	    display: inline-block;
+	    color: #555;
+	    font-size: .11rem;
+	    height: .15rem;
+	    line-height: .15rem;
+	    margin-right: .05rem;
+	    padding: 0 .06rem;
+	    -webkit-border-radius: .22rem;
+	    -moz-border-radius: .22rem;
+	    -ms-border-radius: .22rem;
+	    -o-border-radius: .22rem;
+	    border-radius: .22rem;
+	    border: 1px solid #ccc;
+	}
 	.choose_more{ 
 		width: 100%;
 		height: 0.380435rem;
@@ -230,24 +263,35 @@ export default{
 	data(){
 		return{
 			chooseHeaderData: [],
-			// chooseFilterData: [],
+			cityId: this.bus.cityId,
+			chooseContentData: [],
+			bizType: 2
 		}
 	},
+	
 	mounted () {
-		this.axios.get('static/data/data/choose/merchantList.json').then(res => {
-			this.chooseHeaderData = res.data.data.urlParamValues
-			// this.chooseFilterData = res.data.data.urlParamValues
-			// console.log(this.chooseHeaderData)
-			// console.log(this.chooseFilterData)
-			
+		
+		this.axios.get('api/api/m/filter/list-v3.9/'+this.cityId).then(res => {
+			this.chooseHeaderData = res.data.data.urlParamValues		
+			console.log(res)		
 		},err =>{
 			console.log(err)
 		},'json')
-		
 	},
 	methods: {
-		back(){
+		back(){	
 			history.back();
+		},
+		headChange(){
+			
+			if(event.currentTarget.innerHTML == '商户'){
+				this.bizType = 2;
+			}else if(event.currentTarget.innerHTML == '商品'){
+				this.bizType = 1;
+			}
+		},
+		showDiv(){
+			console.log('1')
 		}
 	}
 }
