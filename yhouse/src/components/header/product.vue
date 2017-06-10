@@ -29,8 +29,7 @@
 		props: ['cityId'],
 		mounted(){
 			this.axios.get('/api/api/m/search-v4.2?bizType=1&catalog=2&cityId='+ this.cityId +'&filter=2&mc=&page=1&pageSize=10&sort=1').then(res => {
-				this.chooseContentData = res.data.data.searchData.doc		
-				console.log(this.chooseContentData)	
+				this.chooseContentData = res.data.data.searchData.doc
 			},err =>{
 				console.log(err)
 			},'json')

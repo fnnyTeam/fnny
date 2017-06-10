@@ -272,7 +272,9 @@ export default{
 			bizType: 2
 		}
 	},
-	
+	created(){
+		// this.headChange();
+	},
 	mounted () {
 		
 		this.axios.get('api/api/m/filter/list-v3.9/'+this.cityId).then(res => {
@@ -287,7 +289,6 @@ export default{
 			history.back();
 		},
 		headChange(){
-			
 			if(event.currentTarget.innerHTML == '商户'){
 				this.bizType = 2;
 			}else if(event.currentTarget.innerHTML == '商品'){

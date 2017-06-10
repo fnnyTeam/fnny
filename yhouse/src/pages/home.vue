@@ -11,7 +11,7 @@
             <router-link to='/choose' class="headerChoose" tag="div">筛选<span></span></router-link>
           </div> 
           <div class="tabbar">
-            <router-link to='/food' tag="div" ><span @click="styleFn(1)">美食</span></router-link>
+            <router-link to='/food' tag="div" :class="{colorStyle:styleFlag}"><span @click="styleFn(1)">美食</span></router-link>
             <router-link to='/play' tag="div" ><span @click="styleFn(2)">玩乐</span></router-link>
             <router-link to='/life' tag="div" ><span @click="styleFn(3)">夜生活</span></router-link>
             <router-link to='/spa'  tag="div" ><span @click="styleFn(4)">美容/SPA</span></router-link>
@@ -35,6 +35,7 @@
           scrollNum:0,
           scrollTop:0,
           timeFn:'',
+          styleFlag:true
         }
      },
      created(){     
@@ -54,6 +55,7 @@
         styleFn(nav){
             this.bus.routerId = nav;
             this.navStyleFn();
+            this.styleFlag = false;
             // console.log(this.bus.routerId)
         },
         hmScrollFn(ve){
@@ -104,6 +106,9 @@
 	 }
 </script>
 <style>
+.colorStyle{
+  color: red;
+}
 .home{
   position: absolute;
   top: 0;

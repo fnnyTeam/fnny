@@ -60,6 +60,8 @@
 			}
 		},
 		created () {
+			console.log(this.$route.query);
+			console.log(this.id);
 			this.detailId = this.id.id
 			this.axios.get('api/api/m/topic/item-v2.6/'+this.detailId+'?from=h5&page=1&pageSize=10')
 			.then(res => {
