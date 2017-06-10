@@ -11,7 +11,7 @@
 		<div class="search_scroll">
 			<div class="search_content">
 				<section class="search_list" v-for='item in searchData'>
-					<!-- <i style="backgroundImage:url(bgUrl);background-size: 50% auto;" class="search_icon"></i> -->
+					<!-- <i  v-for='item in bgUrl' :style="{'backgroundImage':'url(' +item +')','backgroundSize': '50% auto'}" class="search_icon"></i> -->
 					<i class="search_icon"><img :src="item.icon"></i>
 					<ol class="search_item">
 						<li v-for='key,index in item.itemList'>{{ item.itemList[index] }}</li>
@@ -45,6 +45,9 @@ export default{
 	data(){
 		return {
 			searchData:[],
+			bgUrl:['http://r.yhres.com/search2/district@2x.png',
+					'http://r.yhres.com/search2/all@2x.png',
+					'http://r.yhres.com/search2/hot_normal@2x.png']
 		}
 	},
 	created(){
@@ -113,7 +116,7 @@ export default{
 	}
 	.search_scroll .search_content{
 		margin-top: .15rem;
-		height: 1000px;
+		/*height: 1000px;*/
 	}
 	.search_list{
 		height: .4rem;
@@ -140,11 +143,11 @@ export default{
 		height: 0.18rem;
 	}
 	.search_item{
-		width: 100%;
+		/*width: 100%;*/
 		display: flex;
 	}
 	.search_item>li{
-		width: 33.33%;
+		width: 40%;
 		border-left: 1px solid #eee;
 	    font-size: .13rem;
 	    color: #111;
