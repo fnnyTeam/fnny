@@ -67,9 +67,10 @@
 		</div>
 		<!-- 地图 -->
 		<div id="map_content">
-			<!-- <div class="map_title">
-				<span></span>
-			</div> -->
+			<div class="map_title">
+				地图模式
+				<span @click='goBack'></span>
+			</div>
 		</div>
 	</div>
 </template>
@@ -89,11 +90,28 @@
 	}
 	.map_title{
 		width: 100%;
-		height: 15px;
-		background: #eee;
+		height: 35px;
+		line-height: 35px;
+		background: #f4f4f4;
+		border-bottom: 1px solid #e1e1e1;
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		z-index: 101;
+		text-align: center;
+		color: #555;
+		font-size: 14px;
 	}
 	.map_title>span{
-		background: url(../../../static/imgs/play/icon_link.png);
+		background: url(../../../static/imgs/play/header.png) no-repeat;
+		background-size: 36px 18px;
+		display: inline-block;
+		width: 18px;
+		height: 18px;
+		position: absolute;
+		top: 8px;
+		left: 5px;
 	}
 	#playDetail{
 		background-color: #fff;
@@ -434,8 +452,19 @@ import playDetailFooter from './../../components/footer/footer'
 				center:[121.498586,31.239637],
 				resizeEnable: true
 			});
+
+			// 添加工具条、比例尺、定位、鹰眼控件
+			AMap.plugin(['AMap.ToolBar','AMap.Scale','AMap.OverView'],
+			    function(){
+			        map.addControl(new AMap.ToolBar());	 // 工具栏
+
+			        map.addControl(new AMap.Scale());	//比例尺   
+
+			        map.addControl(new AMap.OverView({isOpen:true}));	//鹰眼
+			});
 			// 语言设置
 			map.setLang('zh_cn');
+
 			// 点击按钮获取地图
 			AMap.event.addDomListener(document.querySelector('.playDetail_icon2'),"click",()=>{
 					console.log(this.playDetailData)	
