@@ -4,7 +4,7 @@
 			<p class="footerContaner_content">
 				<a href="" @click="goHome()">首页</a>
 				<span>|</span>
-				<a href="">订单</a>
+				<a href="order">订单</a>
 				<span>|</span>
 				<a href="">登录</a>
 			</p>
