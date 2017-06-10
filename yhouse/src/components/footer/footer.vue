@@ -4,7 +4,7 @@
 			<p class="footerContaner_content">
 				<a href="" @click="goHome()">首页</a>
 				<span>|</span>
-				<a href="order">订单</a>
+				<router-link to="order">订单</router-link>
 				<span>|</span>
 				<a href="">登录</a>
 			</p>
@@ -17,7 +17,6 @@
 		</div>
 	</div>
 </template>
-
 <script type="text/javascript">
 	export default{
 		name: 'footer',
