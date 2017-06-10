@@ -39,12 +39,13 @@ export default{
 			this.jxThemeData = res.data.data.doc[2].itemData
 			this.shopData = res.data.data.doc[3].itemData
 			this.swiperData = res.data.data.extraData.rocket.reserveList[0].content
+			// console.log(this.swiperData)
 			this.bannerData = res.data.data.doc[1].itemData[0].content
 		},err =>{
 			console.log(err)
 		},'json');
 
-		
+
 	},
 	components: {
 		jxTheme, shopList, Swiper, myFooter
