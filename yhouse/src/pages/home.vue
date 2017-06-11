@@ -35,12 +35,14 @@
           scrollNum:0,
           scrollTop:0,
           timeFn:'',
-          styleFlag:true
+          styleFlag:false
         }
      },
      created(){     
         this.navStyleFn();
-        var timeFn1=1,timeFn2;
+        if(this.$route.path == '/'){
+          this.styleFlag = true;
+        }
      },
      watch:{
           scrollFlag:function(e){
