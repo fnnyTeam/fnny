@@ -45,7 +45,7 @@ const routes = [
 	{path: '/host',component: Host},
 ]
 
-// 导出创建好的router的对象
+// 导出创建好的router的对象 
 export default new VueRouter({
 	mode: 'history',
 	routes

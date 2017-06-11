@@ -41,22 +41,22 @@
 						<span class="shopDetail_more">查看详情</span>				
 					</section>					
 				</article>
-				<!-- <div class="shopEstimate SD_h">
+				<div class="shopEstimate SD_h">
 					<h3><span>探店测评</span></h3>
 					<div class="estimateHeader">
-						<p v-text="'已有'+ hostShareTag.contentNum +'人参加'"></p>
+						<p class="eH_p1" v-text="'已有'+ hostShareTag.contentNum +'人参加'"></p>
 						<p class="shopSay" style="text-align:left">{{hostShareTag.description}}</p>
 						<div class="estimateMains" v-for="person in hostShareTag.contentList">
 							<h4><img :src="person.userShowPicSmallUrl" alt=""><span>{{person.userName}}</span></h4>
-							<p></p>
-							<ul>
-								<li><img src="" alt="">999</li>
+							<p>{{person.description}}</p>
+							<ul class="picUl">
+								<li v-for="url in 3"><img :src="person.smallPicUrls[url-1]" alt=""></li>
 							</ul>
-							<div><span class="seeMore">查看更多</span></div>
 						</div>
+						<div class="seeMoreDiv"><span class="seeMore">查看更多</span></div>
 					</div>
 				</div>				
-				<div class="hotArticle SD_h">
+				<!-- <div class="hotArticle SD_h">
 					<h3><span>热文收录</span></h3>
 					<p><span></span><a><i></i></a></p>
 				</div>
@@ -88,8 +88,8 @@
 					</ul>
 				</div> -->
 			</div>
-		</div>	
 		<theme-footer></theme-footer>
+		</div>	
 	</div>
 </template>
 
@@ -127,7 +127,7 @@
 					for(var i=0; i<res.data.data.headPics.length; i++){
 						this.swiperData.push({'picUrl':res.data.data.headPics[i]})
 					};
-			// console.log(res.data.data.hostShareTag);
+			console.log(res.data.data.hostShareTag);
 			// console.log(res.data.data.hostShareTag.contentNum);
 			// console.log(res.data.data.hostShareTag.description);
 					// console.log(this.swiperData)
@@ -376,6 +376,7 @@
 	    background-size: .05rem auto;
 	    padding-right: .15rem;
 	}
+
 	/*探店测评*/
 	.SD_h{
 		padding: 0 .2rem;
@@ -386,7 +387,7 @@
 	.SD_h>h3>span{
 		padding-left: .28rem;
 	}
-	.SD_h p{
+	.SD_h .eH_p1{
 		text-align: center;
 	}
 	.estimateMains div{
@@ -397,8 +398,29 @@
 		height: .34rem;
 		border-radius: .17rem;
 	}
-	.estimateMains>h4>span{
-		
+	.estimateMains>h4{
+		margin: .15rem 0;
+		display: flex;
+		align-items: center;
+	}
+	.estimateMains>h4>img{
+		margin-right: .1rem;
+	}
+	.seeMoreDiv{
+		text-align: center;
+	}
+	.picUl{
+		display: flex;
+		width: 100%;
+		justify-content: space-around;
+	}
+	.picUl li{
+		width: 30%;
+		margin: .15rem 0;
+	}
+	.picUl li img{
+		width: 100%;
+		height: auto;
 	}
 	.shopEstimate>h3>span{
 		background: url(../../static/imgs/play/host_1.png) left center no-repeat;		

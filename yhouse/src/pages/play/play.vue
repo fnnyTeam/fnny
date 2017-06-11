@@ -36,7 +36,7 @@
 			</div>
 			<!-- 查看更多 -->
 			<div class="play_last">
-				<p class="load_more unload">查看更多</p>
+				<p class="load_more unload" @click='loadPage'>查看更多</p>
 				<!-- <p class="load_more loading">加载中</p> -->
 			</div>
 			
@@ -189,12 +189,22 @@ export default{
 	methods:{
 		goDetail(data){
 			// 实现路由跳转，并传递参数
-			console.log(data)
 			this.$router.push({
 				path: '/playdetail',
 				query:{
 					id: data
 				} 
+			})
+		},
+		loadPage(){
+			this.axios.get('api/api/m/catalogData/list-v4.0?catalogId=1&cityId='+ this.cityId +'&page=2&pageSize=10&pid=16027,16393,14786,15898,15990,16371,16387,16332,16354,16305&siteId=-1')
+			.then(res => {
+				// console.log(res);
+				var playData1 = res.data.data.doc[0].itemData;
+				console.log(playData1);
+				console.log(this.playData);
+				this.playData = this.playData.concat(playData1);
+				console.log(this.playData);
 			})
 		}
 	},
@@ -202,21 +212,23 @@ export default{
 		return {
 			data: [],
 			playData: [],
-			playSwiperData:[]
+			playSwiperData:[],
+			cityId:this.bus.cityId,
 		}
 
 	},
 	created(){
-		this.axios.get('api/api/m/catalogData/list-v4.0?catalogId=1&cityId=1&page=1&pageSize=10&siteId=-1').then(res => {
+		this.axios.get('api/api/m/catalogData/list-v4.0?catalogId=1&cityId='+ this.cityId +'&page=1&pageSize=10&siteId=-1').then(res => {
 			this.data = res.data.data.doc[1].itemData[0].content
 			// console.log(res.data)
 			this.playData = res.data.data.doc[3].itemData
 			this.playSwiperData = res.data.data.extraData.rocket.reserveList[0].content
-			// console.log(this.playSwiperData)
 		},err =>{
 			console.log(err);
-		},'json')	
+		},'json');
 
+		
+		
 	}
 }
 
