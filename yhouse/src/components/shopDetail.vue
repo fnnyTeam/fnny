@@ -3,7 +3,7 @@
 		<div class="shopDetail_header">
 			<span class="shopDetail_header_back" @click="goBack()"></span>
 			<h1 class="shopDetail_header_title" v-text="detailShopData.title"></h1>
-			<span class="shopDetail_header_homePage"></span>
+			<span class="shopDetail_header_homePage" @click="goHome()"></span>
 		</div>	
 		<div class="shopDetail_scroll">
 			<div class="shopDetail_content">
@@ -65,8 +65,13 @@
 			}
 		},
 		methods: {
-			goBack () {
+			goBack(){
 				history.back();
+			},
+			goHome(){
+				this.$router.push({
+					path : '/food'
+				})
 			}
 		},
 		components: {
