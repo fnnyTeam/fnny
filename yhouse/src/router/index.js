@@ -22,8 +22,8 @@ import Host from '../components/shopDetail'
 
 import Shop from '../components/header/shop'
 import Product from '../components/header/product'
-
 import Order from '../components/order/order'
+
 
 
 // 定义路由
@@ -45,10 +45,10 @@ const routes = [
 	{path: '/playdetail',component: PlayDetail},
 	{path: '/topic',component: Topic},
 	{path: '/host',component: Host},
-	{path: '/order', component: Order}
+	{path: '/order',component: Order},
 ]
 
-// 导出创建好的router的对象
+// 导出创建好的router的对象 
 export default new VueRouter({
 	// mode: 'history',
 	routes

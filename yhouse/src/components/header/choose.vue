@@ -105,56 +105,7 @@
 		top: 0.8rem;
 		left: 0;
 		right: 0;
-	}	
-</style>
-<script type="text/javascript">
-	export default{
-		name: 'choose',
-		data(){
-			return{
-				cityId: this.bus.cityId,
-				bizType: 2,
-				urlParamValues: 0,
-				chooseHeaderData: [],
-				chooseContentData: [],
-				
-			}
-		},
-		
-		created () {
-			this.axios.get('api/api/m/filter/list-v3.9/'+this.cityId).then(res => {
-				this.chooseHeaderData = res.data.data.urlParamValues	
-
-			},err =>{
-				console.log(err)
-			},'json')
-		},
-		methods: {
-			back(){	
-				this.$router.push({
-					path:'/food'
-				})	
-			},
-			headChange(){	
-				if(event.currentTarget.innerHTML == '商户'){
-					this.bizType = 2;
-					this.urlParamValues = 0;
-				}else if(event.currentTarget.innerHTML == '商品'){
-					this.bizType = 1;
-					this.urlParamValues = 1;
-				}
-				
-			},
-			chooseFilter(){
-
-			},
-			showDiv(){
-				console.log('1')
-			}
-		}
 	}
-</script>
-<style type="text/css">
 	.choose_filter_div{
 		position: absolute;
 		top: 0;
@@ -347,4 +298,55 @@
 	    background-size: 2rem .2rem;
 	    background-color: #f4f4f4;
 	}
+
 </style>
+<script type="text/javascript">
+export default{
+	name: 'choose',
+	data(){
+		return{
+			chooseHeaderData: [],
+			cityId: this.bus.cityId,
+			chooseContentData: [],
+			urlParamValues: 0,
+			bizType: 2
+		}
+	},
+	created(){
+		// this.headChange();
+	},
+	mounted () {		
+		this.axios.get('api/api/m/filter/list-v3.9/'+this.cityId).then(res => {
+			this.chooseHeaderData = res.data.data.urlParamValues	
+
+		},err =>{
+			console.log(err)
+		},'json')
+	},
+	methods: {
+		back(){	
+			this.$router.push({
+				path:'/food'
+			})	
+		},
+		headChange(){	
+			if(event.currentTarget.innerHTML == '商户'){
+				this.bizType = 2;
+				this.urlParamValues = 0;
+			}else if(event.currentTarget.innerHTML == '商品'){
+				this.bizType = 1;
+				this.urlParamValues = 1;
+			}
+			
+		},
+		chooseFilter(){
+
+		},
+		showDiv(){
+			console.log('1')
+		}
+	}
+}
+</script>
+
+
