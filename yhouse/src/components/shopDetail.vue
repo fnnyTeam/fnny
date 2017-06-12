@@ -37,16 +37,59 @@
 						</h3>
 						<div class="shopDetail_highs" >
 							<p v-for='item in detailShopData.highs'>{{ item }}</p>
-						</div>
-					
-							<span class="shopDetail_more">查看详情</span>
-						
-					</section>
-					
+						</div>					
+						<span class="shopDetail_more">查看详情</span>				
+					</section>					
 				</article>
+				<div class="shopEstimate SD_h">
+					<h3><span>探店测评</span></h3>
+					<div class="estimateHeader">
+						<p class="eH_p1" v-text="'已有'+ hostShareTag.contentNum +'人参加'"></p>
+						<p class="shopSay" style="text-align:left">{{hostShareTag.description}}</p>
+						<div class="estimateMains" v-for="person in hostShareTag.contentList">
+							<h4><img :src="person.userShowPicSmallUrl" alt=""><span>{{person.userName}}</span></h4>
+							<p>{{person.description}}</p>
+							<ul class="picUl">
+								<li v-for="url in 3"><img :src="person.smallPicUrls[url-1]" alt=""></li>
+							</ul>
+						</div>
+						<div class="seeMoreDiv"><span class="seeMore">查看更多</span></div>
+					</div>
+				</div>				
+				<!-- <div class="hotArticle SD_h">
+					<h3><span>热文收录</span></h3>
+					<p><span></span><a><i></i></a></p>
+				</div>
+				<div class="appendMsg SD_h">
+					<h3><span>附加信息</span></h3>
+					<ul>
+						<li><img src="" alt=""></li>
+					</ul>
+					<p></p>
+					<div class="appendMsgFooter">
+						<a>在线客服</a>
+						<a>电话客服</a>
+					</div>
+				</div>
+				<div class="guessLike SD_h">
+					<h3><span>猜你喜欢</span></h3>
+					<ul>
+						<li>
+							<div><img src="" alt=""></div>
+							<div class="guessLikeR">
+								<h4></h4>
+								<p></p>
+								<p></p>
+								<div class="guessLikeR_b">
+									<p></p>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div> -->
 			</div>
-		</div>	
 		<theme-footer></theme-footer>
+		</div>	
 	</div>
 </template>
 
@@ -54,6 +97,7 @@
 
 	import Swiper from './swiper/swiper'
 	import themeFooter from './footer/footer'
+
 	export default{
 		name: 'Host', 
 		data () {
@@ -61,6 +105,7 @@
 				id: this.$route.query.id,
 				detailData: [],
 				detailShopData: [],
+				hostShareTag:[],
 				swiperData: []
 			}
 		},
@@ -73,15 +118,18 @@
 			Swiper, themeFooter
 		},
 		created () {
-			
 			this.axios.get('/api/api/m/host/item-v3.8/'+ this.id +'?from=h5')
 				.then(res => {
-					this.detailShopData = res.data.data
+					this.detailShopData = res.data.data;
+					this.hostShareTag = res.data.data.hostShareTag
 					// console.log(this.detailShopData)
 
 					for(var i=0; i<res.data.data.headPics.length; i++){
 						this.swiperData.push({'picUrl':res.data.data.headPics[i]})
-					}
+					};
+			console.log(res.data.data.hostShareTag);
+			// console.log(res.data.data.hostShareTag.contentNum);
+			// console.log(res.data.data.hostShareTag.description);
 					// console.log(this.swiperData)
 				
 			});
@@ -90,6 +138,10 @@
 	}
 </script>
 <style type="text/css">
+	ul,li{
+		padding: 0;
+		margin: 0;
+	}
 	#shopDetail{
 		background: #fff;
 		padding-top: 45px;
@@ -291,8 +343,6 @@
 	.shopDetail_tj{
 		background: url(../../static/imgs/play/tip-1.png) left center no-repeat;
 	}
-
-
 	/*点击体验*/
 	.shopDetail_btn{
 		position: relative;
@@ -317,7 +367,7 @@
 
 	/****活动详情****/
 	
-	.shopDetail_more {
+	.shopDetail_more,.seeMore{
 	    font-size: .12rem;
 	    line-height: .4rem;
 	    height: .4rem;
@@ -325,5 +375,57 @@
 	    background: url(../../static/imgs/play/icon_link.png) right center no-repeat;
 	    background-size: .05rem auto;
 	    padding-right: .15rem;
-	}	
+	}
+
+	/*探店测评*/
+	.SD_h{
+		padding: 0 .2rem;
+	}
+	.SD_h>h3{
+		text-align: center;
+	}
+	.SD_h>h3>span{
+		padding-left: .28rem;
+	}
+	.SD_h .eH_p1{
+		text-align: center;
+	}
+	.estimateMains div{
+		text-align: center;
+	}
+	.estimateMains>h4>img{
+		width: .34rem;
+		height: .34rem;
+		border-radius: .17rem;
+	}
+	.estimateMains>h4{
+		margin: .15rem 0;
+		display: flex;
+		align-items: center;
+	}
+	.estimateMains>h4>img{
+		margin-right: .1rem;
+	}
+	.seeMoreDiv{
+		text-align: center;
+	}
+	.picUl{
+		display: flex;
+		width: 100%;
+		justify-content: space-around;
+	}
+	.picUl li{
+		width: 30%;
+		margin: .15rem 0;
+	}
+	.picUl li img{
+		width: 100%;
+		height: auto;
+	}
+	.shopEstimate>h3>span{
+		background: url(../../static/imgs/play/host_1.png) left center no-repeat;		
+		background-size: .2rem auto;
+	}
+	/*热文收录*/
+	/*附加信息*/
 </style>

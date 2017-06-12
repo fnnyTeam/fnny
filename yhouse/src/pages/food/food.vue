@@ -34,7 +34,6 @@ export default{
 
 	},
 	created () {
-		// console.log(this.cityId);
 		this.axios.get('api/api/m/catalogData/list-v4.0?catalogId=2&cityId='+this.cityId+'&page=1&pageSize=10&siteId=-1').then(res => {
 			this.jxThemeData = res.data.data.doc[2].itemData
 			this.shopData = res.data.data.doc[3].itemData
